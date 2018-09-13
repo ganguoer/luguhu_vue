@@ -176,13 +176,140 @@
       </ul>
       <div class="bottoms_tip"></div>
       <div class="hot_scenic">
-
+        <div class="banners clearfix">
+            <h3 class="tits_tip tits_tip1 lf">热门景点</h3>
+            <router-link to="" class="rf mores">更多>></router-link>
+        </div>
+        <ul class="list_imgs clearfix">
+            <li>
+                <div class="imgs">
+                    <img src="../../static/images/index2.jpg">
+                    <router-link to="" class="modetails">查看详情</router-link>
+                </div>
+                <p>泸沽湖风景区</p>
+            </li>
+            <li>
+                <div class="imgs">
+                    <img src="../../static/images/indexs.jpg">
+                    <router-link to="" class="modetails">查看详情</router-link>
+                </div>
+                <p>大落水村</p>
+            </li>
+            <li>
+                <div class="imgs">
+                    <img src="../../static/images/indexsd.jpg">
+                    <router-link to="" class="modetails">查看详情</router-link>
+                </div>
+                <p>里个雾里岛</p>
+            </li>
+            <li>
+                <div class="imgs">
+                    <img src="../../static/images/indexsda.jpg">
+                    <router-link to="" class="modetails">查看详情</router-link>
+                </div>
+                <p>泸沽湖风景区</p>
+            </li>
+        </ul>
       </div>
+      <div class="hot_scenic mt48">
+        <div class="banners clearfix">
+           <div class="everywarp lf active">
+               <span class="iconcom hotelbg hotelbg1"></span>
+               <span class="sangle"></span>
+               酒店
+            </div>
+            <div class="everywarp lf">
+               <span class="iconcom hotelbg hotelbg2"></span>
+               <span class="sangle"></span>
+               餐饮
+            </div>
+            <div class="everywarp lf">
+               <span class="iconcom hotelbg hotelbg3"></span>
+               <span class="sangle"></span>
+               购物
+            </div>
+            <div class="everywarp lf">
+               <span class="iconcom hotelbg hotelbg4"></span>
+               <span class="sangle"></span>
+               交通
+            </div>
+        </div>
+        <ul class="list_imgs clearfix">
+            <li>
+                <div class="imgs">
+                    <img src="../../static/images/index2.jpg">
+                    <router-link to="" class="modetails">查看详情</router-link>
+                </div>
+                <p>泸沽湖水墨禅境湖景度假酒店</p>
+            </li>
+            <li>
+                <div class="imgs">
+                    <img src="../../static/images/indexs.jpg">
+                    <router-link to="" class="modetails">查看详情</router-link>
+                </div>
+                <p>泸沽湖听花堂海景花园客栈</p>
+            </li>
+            <li>
+                <div class="imgs">
+                    <img src="../../static/images/indexsd.jpg">
+                    <router-link to="" class="modetails">查看详情</router-link>
+                </div>
+                <p>泸沽湖·蜜悦·秘密花园客栈</p>
+            </li>
+            <li>
+                <div class="imgs">
+                    <img src="../../static/images/indexsda.jpg">
+                    <router-link to="" class="modetails">查看详情</router-link>
+                </div>
+                <p>泸沽湖朴宿海景度假客栈</p>
+            </li>
+        </ul>
+      </div>
+  </div>
+  <div class="fourwarp">
+    <h3 class="tits_tip tits_tip1">旅游攻略</h3>
+    <div class="clearfix titles">
+        <span class="lf">旅游攻略</span>
+        <div class="rf writes">
+            <span class="iconcom icon_write"></span>
+            写游记
+        </div>
+    </div>
+    <ul class="ul_contlist">
+        <li class="clearfix">
+            <div class="lf contl_img"><img src="../../static/images/index_23.png"></div>
+            <div class="lf text_p">
+                <p class="titles_1">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
+                <p class="titles_2">听说， 来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟知的地方从容体验，如丽江大理。而泸沽湖，无论计划哪一种都可以把其列入list，分...</p>
+                <div class="bottom_tip clearfix">
+                    <div class="lf bips">
+                        <span class="iconcom areas"></span>
+                        泸沽湖风景区
+                    </div>
+                    <div class="lf bips bips_1">
+                        <span class="area_tip"><img src="../../static/images/index2.jpg"></span>
+                        一直在路上
+                    </div>
+                    <div class="lf bips">
+                        <span class="iconcom look"></span>
+                        65
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
   </div>
 </div>
 </template>
 <script>
 import '../../static/js/Cooldog.js'
+$(function(){
+    $('.list_imgs li').hover(function(){
+        $(this).find('.modetails').show(300);
+    },function(){
+        $(this).find('.modetails').hide(300);
+    })
+})
 export default {
   name: "Index",
   data() {
@@ -211,7 +338,42 @@ export default {
 </script>
 
 <style scoped>
-.hot_scenic{width: 1220px; height: 380px;}
+.look{background-position: -200px -300px;width: 19px;height: 13px;position: absolute;left: 0;top: 3px}
+.areas{background-position: -200px -200px;width: 13px;height: 14px;position: absolute;left: 0;top: 3px}
+.bips{margin-right: 30px; position: relative; padding-left: 15px}
+.area_tip{width: 21px;height: 20px;position: absolute;left: 0;top: 0px;border-radius: 50%;overflow: hidden;}
+.bips_1{padding-left: 25px; color: #ffd200}
+.bottom_tip{margin-top: 60px;}
+.contl_img{width: 298px;height: 173px;}
+.titles_1{font-size: 16px;}
+.titles_2{color:#848484;padding-top: 15px;height: 48px;line-height: 24px; display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;}
+.text_p{margin-left: 30px;width: 700px;}
+.ul_contlist{margin-top: 45px;}
+.ul_contlist li{margin-bottom: 20px}
+.icon_write{width: 13px;height: 14px; background-position: -200px -100px;position: absolute;left: 16px;top: 8px;}
+.writes{background: url(../../static/images/index_19.png);width: 68px;height: 32px; cursor: pointer; line-height: 32px; color: #fff;text-align: right;position: relative;padding-right: 20px;font-size: 12px}
+.fourwarp .titles{height: 52px; line-height: 52px;border-bottom: solid 1px #898989;width: 100%;font-size: 16px; padding: 0 15px}
+.fourwarp{width: 1220px;margin: 0 auto;}
+.hot_scenic .active .sangle{display:block;width:0;height:0; border-width:11px 11px 0;border-style:solid;border-color:#1182e3 transparent transparent;/*黄 透明 透明 */position:absolute;top: 52px;left: 99px;}
+.hotelbg{width: 24px;height: 21px;position: absolute;left: 77px;top: 15px}
+.everywarp{width: 150px;height: 50px; line-height: 50px;margin-right: 27px; cursor: pointer;margin-left: 34px;color: #1182e3;border:solid 1px #1182e3; font-size: 20px; text-align: right;padding-right: 75px;border-radius: 28px;position: relative;}
+.list_imgs .modetails{position: absolute; left: 0; top: 0;bottom: 0;right: 0;z-index: 2;background: rgba(0,0,0,.4);color: #fff;text-align: center;padding-top: 33%;text-decoration: underline;display: none}
+.list_imgs li{float: left;width: 284px;margin-right: 11px}
+.list_imgs li:last-child{margin-right: 0}
+.list_imgs .imgs{width: 284px;height: 205px;box-shadow:2px 2px 10px #888888; overflow: hidden;position: relative;}
+.list_imgs p{text-align: center;color: #1182e3;font-size: 16px;padding-top: 18px;}
+.list_imgs{margin-top: 38px;}
+.hot_scenic{width: 1170px; height: 350px;padding:25px 15px;background:rgba(255,255,255,.4); margin: 0 auto; box-shadow: 4px 4px 15px #888888;margin-top: 40px}
+.mt48{margin-top: 48px}
+.hotelbg1{background-position: 0 -400px;}
+.hot_scenic .active .hotelbg1{background-position: 0 -300px;}
+.hotelbg2{background-position: -100px 0px;}
+.hot_scenic .active .hotelbg2{background-position: -100px -100px;}
+.hotelbg3{background-position: -100px -200px;}
+.hot_scenic .active .hotelbg3{background-position: -100px -300px;}
+.hotelbg4{background-position: -100px -400px;}
+.hot_scenic .active .hotelbg4{background-position: -200px 0px;}
+.hot_scenic .active{background: #1182e3; color: #fff;height: 52px; line-height: 52px;}
 .bottoms_tip{background: url(../../static/images/plant.png);width: 1220px;height: 36px;padding-top: 8px;margin: 0 auto}
 .img_wrap{width:278px;height: 278px;border-radius: 50%;border: solid 3px #fff;overflow: hidden; }
 .scenic_spot{width: 1220px;margin: 0 auto; padding-top: 180px}
@@ -242,6 +404,10 @@ export default {
     text-align: center;
     font-weight: 100;
     margin: 34px auto
+}
+.tits_tip1{
+    background: url(../../static/images/index_122.png);
+    margin: 0
 }
 .weater {
   margin: 40px 0 0 70px;
