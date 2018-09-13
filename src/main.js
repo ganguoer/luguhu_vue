@@ -7,6 +7,7 @@ import $ from 'jquery'
 import '../static/css/common.css'
 Vue.config.productionTip = false
 
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
