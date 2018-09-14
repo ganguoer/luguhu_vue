@@ -174,7 +174,7 @@
     padding-bottom: 104px;
   }
 
-  .charmcontent img {
+  .tourism_c>img {
     width: 100%;
     height: 588px;
     display: block;
@@ -264,6 +264,7 @@
     width: 303px;
     height: 261px;
     filter: blur();
+    text-align: center;
   }
   .tour_bg1{background-color: #7563ff;}
   .tour_bg2{ background-color: #5dc241; }

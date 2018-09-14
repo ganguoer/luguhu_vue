@@ -181,6 +181,7 @@
     width: 1212px;
     height: 912px;
     margin: 63px auto 0px;
+    text-align: center;
   }
 
   .charm_list ul li {

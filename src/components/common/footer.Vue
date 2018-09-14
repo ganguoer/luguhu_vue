@@ -127,7 +127,7 @@
   .pr{position:relative}
   .hidden{display: none}
   .foot .dls dl dd.xia{
-    margin-top: 42px;
+    margin-top: 33px;
   }
   .smalltit{
     margin-top: 30px;
