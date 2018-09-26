@@ -5,7 +5,6 @@
 
    <div class="tourism_c">
      <img src="../../../static/images/t_banner1.png" alt="">
-
      <div class="charm_t">
        <div class="charm_title">
          <span>旅游攻略</span>

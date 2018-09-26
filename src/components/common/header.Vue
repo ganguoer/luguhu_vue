@@ -1,15 +1,15 @@
 <template>
-  <div class="header">
+  <div :class="bheader==1 ? 'header headeropacity':'header'">
     <div class="index_nav clearfix">
       <div class="lf logos"><img src="../../../static/images/logo.png"></div>
       <div class="nav_cont lf">
         <ul class="clearfix">
-          <li><a href="#">首页</a></li>
-          <li><a href="#">最新资讯</a></li>
-          <li><a href="#">景区介绍</a></li>
-          <li class="active"><a href="#">魅力泸沽湖</a></li>
-          <li><a href="#">旅游攻略</a></li>
-          <li><a href="#">景区电商</a></li>
+          <li :class="bactive==1 ? 'active' : '' "><router-link to="">首页</router-link></li>
+          <li :class="bactive==2 ? 'active' : '' "><router-link to="/latestInformation">最新资讯</router-link></li>
+          <li :class="bactive==3 ? 'active' : '' "><router-link to="">景区介绍</router-link></li>
+          <li :class="bactive==4 ? 'active' : '' "><router-link to="">魅力泸沽湖</router-link></li>
+          <li :class="bactive==5 ? 'active' : '' "><router-link to="">旅游攻略</router-link></li>
+          <li :class="bactive==6 ? 'active' : '' "><router-link to="">景区电商</router-link></li>
         </ul>
       </div>
     </div>
@@ -22,6 +22,16 @@
     name: 'header',
     data () {
       return {}
+    },
+    props:{
+      bactive:{
+        type:Number,
+        required:true
+      },
+      bheader:{
+        type:Number,
+        required:true
+      }
     }
   }
 
@@ -36,7 +46,7 @@
     background: -moz-linear-gradient(#9cc9eb, #c3dae9);
     background: linear-gradient(#9cc9eb, #c3dae9);
   }
-
+  .headeropacity{background:rgba(255,255,255,.75)}
   .index_nav {
     width: 926px;
     margin: 0 auto;
@@ -61,7 +71,7 @@
   }
 
   .index_nav .nav_cont ul {
-    margin-left: 10px
+    margin-left: 10px;
   }
 
   .index_nav .nav_cont ul li {

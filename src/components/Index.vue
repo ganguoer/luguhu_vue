@@ -299,10 +299,12 @@
         </li>
     </ul>
   </div>
+  <v-footer></v-footer>
 </div>
 </template>
 <script>
 import '../../static/js/Cooldog.js'
+import footer from "@/components/common/footer";
 $(function(){
     $('.list_imgs li').hover(function(){
         $(this).find('.modetails').show(300);
@@ -316,6 +318,9 @@ export default {
     return {};
   },
   computed: {},
+  components: {
+    "v-footer": footer
+    },
   mounted() {
     let windowh = $(window).height();
     $(".index").css({ height: windowh });
