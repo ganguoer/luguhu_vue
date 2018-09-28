@@ -7,7 +7,7 @@
 
       <div class="charm_t">
         <div class="charm_title">
-          <span>魅力泸沽湖</span>
+          <span><img class="triangle" src="../../../static/images/triangle.png" alt="">魅力泸沽湖</span>
           <p class="address">当前位置：首页>魅力泸沽湖><span>泸沽湖风景区VR全景</span></p>
         </div>
         <div class="charm_des">
@@ -69,6 +69,7 @@
   padding-top: 10px;
   width: 100%;
 }
+img.triangle{width: 7px;height: 12px;vertical-align: inherit;display: inline;margin-right: 14px;}
 .charm_title>span{
   float: left;
   color: #444444;

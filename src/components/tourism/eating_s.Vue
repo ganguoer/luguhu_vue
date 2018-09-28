@@ -6,7 +6,7 @@
 
       <div class="charm_t">
         <div class="charm_title">
-          <span>购在泸沽湖</span>
+          <span><img class="triangle" src="../../../static/images/triangle.png" alt="">购在泸沽湖</span>
           <p class="address">当前位置：首页>旅游攻略>购在泸沽湖><span>摩梭民歌唱片</span></p>
         </div>
 
@@ -69,6 +69,7 @@
     margin-top: -217px;
     padding: 0 28px;
   }
+  img.triangle{width: 7px;height: 12px;vertical-align: inherit;display: inline;margin-right: 14px;}
   .charm_title {
     border-bottom: 1px solid #fff;
     height: 44px;

@@ -6,7 +6,7 @@
 
       <div class="charm_t">
         <div class="charm_title">
-          <span>线路游览</span>
+          <span><img class="triangle" src="../../../static/images/triangle.png" alt="">线路游览</span>
           <p class="address">当前位置：首页>旅游攻略>><span>线路游览</span></p>
         </div>
 
@@ -89,6 +89,7 @@
     padding-top: 10px;
     width: 100%;
   }
+  img.triangle{width: 7px;height: 12px;vertical-align: inherit;display: inline;margin-right: 14px;}
   .charm_title > span {
     float: left;
     color: #444444;
