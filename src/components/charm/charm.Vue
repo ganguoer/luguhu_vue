@@ -1,6 +1,6 @@
 <template>
   <div id="charm">
-    <v-header></v-header>
+    <v-header v-bind:bactive="bactive" v-bind:bheader="bheader"></v-header>
 
     <div class="charmcontent">
       <img src="../../../static/images/meili_banner.png" alt="">
@@ -83,7 +83,10 @@
   export default {
     name: 'charm',
     data () {
-      return {}
+      return {
+        bactive: 4,
+        bheader: 1
+      }
     },
     components: {
       'v-header': header,

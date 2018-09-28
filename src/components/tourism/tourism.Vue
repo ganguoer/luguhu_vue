@@ -1,11 +1,10 @@
 <template>
   <div class="tourism">
 
-    <v-header></v-header>
+    <v-header v-bind:bactive="bactive" v-bind:bheader="bheader"></v-header>
 
-   <div class="tourism_c">
+    <div class="tourism_c">
      <img src="../../../static/images/t_banner1.png" alt="">
-
      <div class="charm_t">
        <div class="charm_title">
          <span><img class="triangle" src="../../../static/images/triangle.png" alt="">旅游攻略</span>
@@ -154,7 +153,10 @@
   export default {
     name: 'tourism',
     data () {
-      return {}
+      return {
+        bactive: 5,
+        bheader: 1
+      }
     },
     components: {
       'v-header': header,

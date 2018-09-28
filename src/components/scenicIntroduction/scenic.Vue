@@ -1,6 +1,6 @@
 <template>
 <div class="scenic">
-  <v-header></v-header>
+  <v-header v-bind:bactive="bactive" v-bind:bheader="bheader"></v-header>
   <div class="tours_con">
     <img src="../../../static/images/t_banner1.png" alt="">
 
@@ -103,6 +103,8 @@
         name: 'scenic',
         data () {
             return {
+              bactive: 3,
+              bheader: 1,
               total: 150,     // 记录总条数
               display: 9,   // 每页显示条数
               current: 1,   // 当前的页数

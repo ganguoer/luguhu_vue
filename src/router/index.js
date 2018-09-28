@@ -4,7 +4,12 @@ import Router from 'vue-router'
 import Index from '@/components/Index'
 import charm from '@/components/charm/charm'  //魅力泸沽湖
 import charmVR from '@/components/charm/charmVR'
-
+import latestInformation from '@/components/latestInformation/latestInformation'
+import newslaste from '@/components/latestInformation/newslaste'
+import soptdeysmic from '@/components/latestInformation/spotdeysmic'
+import picturenews from '@/components/latestInformation/picturenews'
+import konwnperson from '@/components/latestInformation/konwnperson'
+import newsdetail from '@/components/latestInformation/newsdetail'
 import tourism from '@/components/tourism/tourism'  //旅游攻略
 import tourism_s from '@/components/tourism/tourism_s'  //旅游攻略二级页面
 import eating from '@/components/tourism/eating'  //吃 一级页面
@@ -19,7 +24,7 @@ import living_s from '@/components/tourism/living_s'  //住 二级页面
 
 import scenic from '@/components/scenicIntroduction/scenic'  //景区介绍页面
 import scenic_s from '@/components/scenicIntroduction/scenic_s'  //景区介绍二级页面
-
+import market from '@/components/market/market'  //电商页面
 
 Vue.use(Router)
 
@@ -44,6 +49,34 @@ export default new Router({
       path: '/tourism',  //旅游攻略
       name: 'tourism',
       component: tourism
+    },
+    {
+      path:'/latestInformation',
+      name:'latestInformation',
+      component:latestInformation,
+      redirect: '/newszixun',
+      children:[
+        {
+          path:'/newszixun',
+          component:newslaste
+        },
+        {
+          path:'/soptdeysmic',
+          component:soptdeysmic
+        },
+        {
+          path:'/picturenews',
+          component:picturenews
+        },
+        {
+          path:'/konwnperson',
+          component:konwnperson
+        },
+        {
+          path:'/newsdetail',
+          component:newsdetail
+        }
+      ]
     },
     {
       path: '/tourism_s',
@@ -104,6 +137,11 @@ export default new Router({
       path: '/scenic_s',  //景区介绍二级页面
       name: 'scenic_s',
       component: scenic_s
+    },
+    {
+      path: '/market',  //电商页面
+      name: 'market',
+      component: market
     }
 
   ]
