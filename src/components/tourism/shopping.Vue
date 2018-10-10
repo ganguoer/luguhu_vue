@@ -1,6 +1,6 @@
 <template>
   <div class="shopping">
-    <v-header></v-header>
+    <v-header v-bind:bactive="bactive" v-bind:bheader="bheader"></v-header>
     <div class="tours_con">
       <img src="../../../static/images/t_banner1.png" alt="">
 
@@ -13,77 +13,78 @@
         <div class="eatList">
           <ul class="clearfix">
             <li>
-              <a href="#">
+              <router-link to="/shopping_s">
                 <div class="list">
                   <img src="../../../static/images/indexs.jpg" alt="">
                   <p class="img_detail">摩梭民歌唱片</p>
                 </div>
-              </a>
+              </router-link>
             </li>
             <li>
-              <a href="#">
+              <router-link to="/shopping_s">
                 <div class="list">
                   <img src="../../../static/images/indexs.jpg" alt="">
                   <p class="img_detail">摩梭民歌唱片</p>
                 </div>
-              </a>
+              </router-link>
             </li>
             <li>
-              <a href="#">
+              <router-link to="/shopping_s">
                 <div class="list">
                   <img src="../../../static/images/indexs.jpg" alt="">
                   <p class="img_detail">摩梭民歌唱片</p>
                 </div>
-              </a>
+              </router-link>
             </li>
             <li>
-              <a href="#">
+              <router-link to="/shopping_s">
                 <div class="list">
                   <img src="../../../static/images/indexs.jpg" alt="">
                   <p class="img_detail">摩梭民歌唱片</p>
                 </div>
-              </a>
+              </router-link>
             </li>
             <li>
-              <a href="#">
+              <router-link to="/shopping_s">
                 <div class="list">
                   <img src="../../../static/images/indexs.jpg" alt="">
                   <p class="img_detail">摩梭民歌唱片</p>
                 </div>
-              </a>
+              </router-link>
             </li>
             <li>
-              <a href="#">
+              <router-link to="/shopping_s">
                 <div class="list">
                   <img src="../../../static/images/indexs.jpg" alt="">
                   <p class="img_detail">摩梭民歌唱片</p>
                 </div>
-              </a>
+              </router-link>
             </li>
             <li>
-              <a href="#">
+              <router-link to="/shopping_s">
                 <div class="list">
                   <img src="../../../static/images/indexs.jpg" alt="">
                   <p class="img_detail">摩梭民歌唱片</p>
                 </div>
-              </a>
+              </router-link>
             </li>
             <li>
-              <a href="#">
+              <router-link to="/shopping_s">
                 <div class="list">
                   <img src="../../../static/images/indexs.jpg" alt="">
                   <p class="img_detail">摩梭民歌唱片</p>
                 </div>
-              </a>
+              </router-link>
             </li>
             <li>
-              <a href="#">
+              <router-link to="/shopping_s">
                 <div class="list">
                   <img src="../../../static/images/indexs.jpg" alt="">
                   <p class="img_detail">摩梭民歌唱片</p>
                 </div>
-              </a>
+              </router-link>
             </li>
+
           </ul>
           <v-pagination :total="total" :current-page='current' @pagechange="pagechange"></v-pagination>
         </div>
@@ -104,9 +105,17 @@
     name: 'shopping',
     data () {
       return {
+        bactive: 5,
+        bheader: 1,
         total: 150,     // 记录总条数
         display: 9,   // 每页显示条数
         current: 1,   // 当前的页数
+      }
+    },
+    methods: {
+      pagechange:function(currentPage){
+        console.log(currentPage);
+        // ajax请求, 向后台发送 currentPage, 来获取对应的数据
       }
     },
     components: {

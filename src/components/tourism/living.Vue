@@ -1,6 +1,6 @@
 <template>
   <div class="living">
-    <v-header></v-header>
+    <v-header v-bind:bactive="bactive" v-bind:bheader="bheader"></v-header>
     <div class="tours_con">
       <img src="../../../static/images/t_banner1.png" alt="">
 
@@ -13,7 +13,7 @@
         <div class="liveList">
           <ul class="clearfix">
             <li>
-              <a href="#">
+              <router-link to="/living_s">
                 <div class="list clearfix">
                   <img src="../../../static/images/live1.png" alt="">
                   <div class="listr">
@@ -23,10 +23,10 @@
                     <p>电话：0834-3335555</p>
                   </div>
                 </div>
-              </a>
+              </router-link>
             </li>
             <li>
-              <a href="#">
+              <router-link to="/living_s">
                 <div class="list clearfix">
                   <img src="../../../static/images/live1.png" alt="">
                   <div class="listr">
@@ -36,10 +36,10 @@
                     <p>电话：0834-3335555</p>
                   </div>
                 </div>
-              </a>
+              </router-link>
             </li>
             <li>
-              <a href="#">
+              <router-link to="/living_s">
                 <div class="list clearfix">
                   <img src="../../../static/images/live1.png" alt="">
                   <div class="listr">
@@ -49,7 +49,7 @@
                     <p>电话：0834-3335555</p>
                   </div>
                 </div>
-              </a>
+              </router-link>
             </li>
 
           </ul>
@@ -73,6 +73,8 @@
     name: 'living',
     data () {
       return {
+        bactive: 5,
+        bheader: 1,
         total: 150,     // 记录总条数
         display: 9,   // 每页显示条数
         current: 1,   // 当前的页数

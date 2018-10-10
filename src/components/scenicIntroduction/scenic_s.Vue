@@ -1,8 +1,8 @@
 <template>
   <div class="scenic_s">
-    <v-header></v-header>
+    <v-header v-bind:bactive="bactive" v-bind:bheader="bheader"></v-header>
     <div class="tours_con">
-      <img src="../../../static/images/t_banner1.png" alt="">
+      <img src="../../../static/images/scenic_banner.png" alt="">
 
       <div class="charm_t">
         <div class="charm_title">
@@ -52,7 +52,10 @@
   export default {
     name: 'scenic_s',
     data () {
-      return {}
+      return {
+        bactive: 3,
+        bheader: 1
+      }
     },
     components: {
       'v-header': header,

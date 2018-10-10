@@ -2,7 +2,7 @@
 <div class="scenic">
   <v-header v-bind:bactive="bactive" v-bind:bheader="bheader"></v-header>
   <div class="tours_con">
-    <img src="../../../static/images/t_banner1.png" alt="">
+    <img src="../../../static/images/scenic_banner.png" alt="">
 
     <div class="charm_t">
       <div class="charm_title">
@@ -13,76 +13,76 @@
       <div class="eatList">
         <ul class="clearfix">
           <li>
-            <a href="#">
+            <router-link to="/scenic_s">
               <div class="list">
                 <img src="../../../static/images/tourism_s1.png" alt="">
                 <p class="img_detail">格姆女神山</p>
               </div>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="#">
+            <router-link to="/scenic_s">
               <div class="list">
                 <img src="../../../static/images/tourism_s1.png" alt="">
                 <p class="img_detail">格姆女神山</p>
               </div>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="#">
+            <router-link to="/scenic_s">
               <div class="list">
                 <img src="../../../static/images/tourism_s1.png" alt="">
                 <p class="img_detail">格姆女神山</p>
               </div>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="#">
+            <router-link to="/scenic_s">
               <div class="list">
                 <img src="../../../static/images/tourism_s1.png" alt="">
                 <p class="img_detail">格姆女神山</p>
               </div>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="#">
+            <router-link to="/scenic_s">
               <div class="list">
                 <img src="../../../static/images/tourism_s1.png" alt="">
                 <p class="img_detail">格姆女神山</p>
               </div>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="#">
+            <router-link to="/scenic_s">
               <div class="list">
                 <img src="../../../static/images/tourism_s1.png" alt="">
                 <p class="img_detail">格姆女神山</p>
               </div>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="#">
+            <router-link to="/scenic_s">
               <div class="list">
                 <img src="../../../static/images/tourism_s1.png" alt="">
                 <p class="img_detail">格姆女神山</p>
               </div>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="#">
+            <router-link to="/scenic_s">
               <div class="list">
                 <img src="../../../static/images/tourism_s1.png" alt="">
                 <p class="img_detail">格姆女神山</p>
               </div>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="#">
+            <router-link to="/scenic_s">
               <div class="list">
                 <img src="../../../static/images/tourism_s1.png" alt="">
                 <p class="img_detail">格姆女神山</p>
               </div>
-            </a>
+            </router-link>
           </li>
         </ul>
         <v-pagination :total="total" :current-page='current' @pagechange="pagechange"></v-pagination>

@@ -25,24 +25,30 @@
           <li><img src="../../../static/images/shexiang1.png" alt=""></li>
           <li class="bg1">
             <router-link to='charmVR'>
+              <div class="mask_charm">
               <img class="shex" src="../../../static/images/shexiang.png" alt="">
               <p class="s_title">泸沽湖风景区VR全景</p>
               <p class="s_eng">Lugu lake scenic area VR panorama</p>
+              </div>
             </router-link>
           </li>
           <li><img src="../../../static/images/shexiang2.png" alt=""></li>
           <li class="bg2">
             <router-link to='charmVR'>
+              <div class="mask_charm">
               <img class="shex" src="../../../static/images/shexiang.png" alt="">
               <p class="s_title">大落水村VR全景</p>
               <p class="s_eng">Daluoshui Village VR Panorama</p>
+              </div>
             </router-link>
           </li>
           <li class="bg3">
             <router-link to='charmVR'>
+              <div class="mask_charm">
               <img class="shex" src="../../../static/images/shexiang.png" alt="">
               <p class="s_title">祭神台VR全景</p>
               <p class="s_eng">Festival of God VR Panorama</p>
+              </div>
             </router-link>
           </li>
           <li>
@@ -55,9 +61,11 @@
           <li><img src="../../../static/images/shexiang5.png" alt=""></li>
           <li class="bg4">
             <router-link to='charmVR'>
+              <div class="mask_charm">
               <img class="shex" src="../../../static/images/shexiang.png" alt="">
               <p class="s_title">里务比寺VR全景</p>
               <p class="s_eng">Philippine Temple VR Panorama</p>
+              </div>
             </router-link>
           </li>
           <li class="ex">
@@ -207,7 +215,7 @@
     width: 78px;
     height: 55px;
     margin: 0 auto;
-    margin-top: 75px;
+    padding-top: 75px;
   }
 
   .s_title {

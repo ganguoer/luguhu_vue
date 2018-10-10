@@ -19,24 +19,24 @@
              <img class="tourlist" src="../../../static/images/tourlist1.png" alt="">
              <div class="top_mode">
                <p>泸沽湖属国家级重点风景名胜区，国家AAAA级旅游景区，位于四川省西南部、青藏高原东南缘，湖面海拔2690米，水域面积58.8平方公里，平均水深45米，最大水深93米，能见度...
-               <a href="#">【查看详情】</a></p>
+               <router-link to="/tourism_s">【查看详情】</router-link></p>
              </div>
            </div>
            <div class="tour_link tour_bg1">
-             <a href="#">
+             <router-link to="/shopping">
                <img class="tour_icon" src="../../../static/images/t_shop.png" alt="">
                <p class="tour_title">购在泸沽湖</p>
                <p class="tour_eng">Bought in Lugu lake</p>
-             </a>
+             </router-link>
            </div>
          </li>
          <li >
            <div class="tour_link tour_bg2">
-             <a href="#">
+             <router-link to="/living">
                <img class="tour_icon" src="../../../static/images/t_hotel.png" alt="">
                <p class="tour_title">住在泸沽湖</p>
                <p class="tour_eng">Living in Lugu lake</p>
-             </a>
+             </router-link>
            </div>
            <div class="tour_img">
              <img class="tourlist" src="../../../static/images/tourlist2.png" alt="">
@@ -47,21 +47,21 @@
              <img class="tourlist" src="../../../static/images/tourlist3.png" alt="">
            </div>
            <div class="tour_link tour_bg3">
-             <a href="#">
+             <router-link to="/walk_s">
                <img class="tour_icon" src="../../../static/images/t_walk.png" alt="">
                <p class="tour_title">行在泸沽湖</p>
                <p class="tour_eng">Walking in Lugu lake</p>
-             </a>
+             </router-link>
            </div>
 
          </li>
          <li >
            <div class="tour_link tour_bg4">
-             <a href="#">
+             <router-link to="/eating">
                <img class="tour_icon" src="../../../static/images/t_eat.png" alt="">
                <p class="tour_title">吃在泸沽湖</p>
                <p class="tour_eng">Eating in Lugu lake</p>
-             </a>
+             </router-link>
            </div>
            <div class="tour_img">
              <img class="tourlist" src="../../../static/images/tourlist4.png" alt="">
@@ -77,28 +77,36 @@
        </div>
        <ul class="clearfix">
          <li>
-           <img class="linelist" src="../../../static/images/linelist1.png" alt="">
-           <div class="linemode">
-             成都周边游纯玩泸沽湖四日游
-           </div>
+           <router-link to="/line_s">
+             <img class="linelist" src="../../../static/images/linelist1.png" alt="">
+             <div class="linemode">
+               成都周边游纯玩泸沽湖四日游
+             </div>
+           </router-link>
          </li>
          <li>
+           <router-link to="/line_s">
            <img class="linelist" src="../../../static/images/linelist1.png" alt="">
            <div class="linemode">
              成都周边游纯玩泸沽湖四日游
            </div>
+           </router-link>
          </li>
          <li>
+           <router-link to="/line_s">
            <img class="linelist" src="../../../static/images/linelist1.png" alt="">
            <div class="linemode">
              成都周边游纯玩泸沽湖四日游
            </div>
+           </router-link>
          </li>
          <li>
+           <router-link to="/line_s">
            <img class="linelist" src="../../../static/images/linelist1.png" alt="">
            <div class="linemode">
              成都周边游纯玩泸沽湖四日游
            </div>
+           </router-link>
          </li>
        </ul>
      </div>
@@ -110,33 +118,42 @@
        </div>
        <ul class="clearfix">
          <li>
-           <img class="travellist" src="../../../static/images/travellist1.png" alt="">
-           <div class="travelmode">
-             <p class="travel_t">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
-             <p class="travel_des">听说，来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟...</p>
-           </div>
+           <router-link to="/travel_s">
+             <img class="travellist" src="../../../static/images/travellist1.png" alt="">
+             <div class="travelmode">
+               <p class="travel_t">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
+               <p class="travel_des">听说，来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟...</p>
+             </div>
+           </router-link>
          </li>
          <li>
-           <img class="travellist" src="../../../static/images/travellist1.png" alt="">
-           <div class="travelmode">
-             <p class="travel_t">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
-             <p class="travel_des">听说，来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟...</p>
-           </div>
+           <router-link to="/travel_s">
+             <img class="travellist" src="../../../static/images/travellist1.png" alt="">
+             <div class="travelmode">
+               <p class="travel_t">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
+               <p class="travel_des">听说，来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟...</p>
+             </div>
+           </router-link>
          </li>
          <li>
-           <img class="travellist" src="../../../static/images/travellist1.png" alt="">
-           <div class="travelmode">
-             <p class="travel_t">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
-             <p class="travel_des">听说，来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟...</p>
-           </div>
+           <router-link to="/travel_s">
+             <img class="travellist" src="../../../static/images/travellist1.png" alt="">
+             <div class="travelmode">
+               <p class="travel_t">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
+               <p class="travel_des">听说，来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟...</p>
+             </div>
+           </router-link>
          </li>
          <li>
-           <img class="travellist" src="../../../static/images/travellist1.png" alt="">
-           <div class="travelmode">
-             <p class="travel_t">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
-             <p class="travel_des">听说，来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟...</p>
-           </div>
+           <router-link to="/travel_s">
+             <img class="travellist" src="../../../static/images/travellist1.png" alt="">
+             <div class="travelmode">
+               <p class="travel_t">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
+               <p class="travel_des">听说，来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟...</p>
+             </div>
+           </router-link>
          </li>
+
        </ul>
      </div>
 
@@ -301,7 +318,7 @@
   .line_list ul li{float: left; position: relative;margin-right: 36px;}
   .line_list ul li:last-child{margin-right: 0}
   .line_list ul li .linelist{width: 275px;height: 275px;display: block;}
-  .line_list ul li .linemode{position: absolute;font-size: 16px;color: #fff;
+  .line_list ul li .linemode{position: absolute;font-size: 16px;color: #fff;text-align: center;
     width: 100%;left: 0;bottom: 0;
     height: 49px;line-height: 49px;
     background-color: rgba(0,0,0,0.54);}
@@ -314,4 +331,5 @@
   .travel_t{font-size: 16px;padding:0 10px 10px;border-bottom: 1px solid #fff;}
   .travel_des{font-size: 14px;padding: 10px 10px 0;line-height: 22px;}
 
+  li>a{display: block;width: 100%;height: 100%;}
 </style>

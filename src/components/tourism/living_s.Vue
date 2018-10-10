@@ -1,6 +1,6 @@
 <template>
   <div class="living_s">
-    <v-header></v-header>
+    <v-header v-bind:bactive="bactive" v-bind:bheader="bheader"></v-header>
 
     <div class="tours_con">
       <img src="../../../static/images/t_banner1.png" alt="">
@@ -95,6 +95,8 @@
     name: 'living_s',
     data () {
       return {
+        bactive: 5,
+        bheader: 1,
         swiperOption: {
           autoplay: true,
           loop: true, // 循环模式选项

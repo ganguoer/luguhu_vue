@@ -1,6 +1,6 @@
 <template>
   <div class="line_s">
-    <v-header></v-header>
+    <v-header v-bind:bactive="bactive" v-bind:bheader="bheader"></v-header>
     <div class="tours_con">
       <img src="../../../static/images/t_banner1.png" alt="">
 
@@ -51,7 +51,10 @@
   export default {
     name: 'line_s',
     data () {
-      return {}
+      return {
+        bactive: 5,
+        bheader: 1
+      }
     },
     components: {
       'v-header': header,

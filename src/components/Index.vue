@@ -16,6 +16,8 @@
         <div class="rf search">
             <input type="text" value="咨讯/景区/攻略" ref="input1" @focus.prevent="add" @blur.prevent="changeCount()">
             <span class="iconcom search_icon"></span>
+
+
         </div>
         <div class="lookmore" @click="lookmores">查看更多<span class="iconcom arrowdowns"></span></div>
     </div>
@@ -25,8 +27,8 @@
       <div class="lf lastes_news">
         <div class="clearfix">
           <div class="lf dates">
-            <p class="dates_month">2018-9</p>
-            <p class="dates_day">06</p>
+            <p class="dates_month"></p>
+            <p class="dates_day"></p>
           </div>
           <div class="lf texts">
             <h3>最新资讯</h3>
@@ -36,7 +38,7 @@
         </div>
       </div>
       <div class="weater lf">
-        <iframe width="500" scrolling="no" height="18" frameborder="0" allowtransparency="true" src="//i.tianqi.com/index.php?c=code&id=1&icon=1&py=tongzhou&wind=1&num=2&site=14"></iframe>
+        <iframe width="500" scrolling="no" height="18" frameborder="0" allowtransparency="true" src="https://i.tianqi.com/index.php?c=code&id=1&icon=2&py=ninglang&wind=1&num=2&site=14"></iframe>
       </div>
     </div>
     <div class="clearfix newswarp">
@@ -103,7 +105,7 @@
             <h3 class="tits_tip">热点资讯</h3>
             <div class="titles clearfix">
                 <span class="lf dt">景区动态</span>
-                <router-link to="" class="rf mores">更多>></router-link>
+                <router-link to="/latestInformation" class="rf mores">更多>></router-link>
             </div>
             <div class="clearfix one-news">
                 <div class="lf img_cont"><img src="../../static/images/index2.jpg"></div>
@@ -322,6 +324,7 @@ export default {
     "v-footer": footer
     },
   mounted() {
+    this.showTime();
     let windowh = $(window).height();
     $(".index").css({ height: windowh });
   },
@@ -337,13 +340,28 @@ export default {
     lookmores() {
       var h = $(window).height();
       $(window).scrollTop(h);
+    },
+    showTime(){
+      var dates_month = $(".dates_month");
+      var dates_day = $(".dates_day");
+      var dt = new Date(); // 得到当前时间
+      var y = dt.getFullYear(); // 当前年份
+      var m = dt.getMonth() + 1; // 当前月份，getMonth 返回值是 0-11 对应 1-12月，因此全部加1
+      var d = dt.getDate();
+        if(d<10) d='0' + d;
+      var str =  y + '-' + m  ;
+      var date = d ;
+      $(".dates_month").html(str); // 将格式化后的内容装载到容器中
+      $(".dates_day").html(date); // 将格式化后的内容装载到容器中
+      console.log(str);
+      console.log(date);
     }
   }
 };
 </script>
 
 <style scoped>
-.look{background-position: -200px -300px;width: 19px;height: 13px;position: absolute;left: 0;top: 3px}
+.look{background-position: -200px -300px;width: 20px;height: 13px;position: absolute;left: -7px;top: 3px}
 .areas{background-position: -200px -200px;width: 13px;height: 14px;position: absolute;left: 0;top: 3px}
 .bips{margin-right: 30px; position: relative; padding-left: 15px}
 .area_tip{width: 21px;height: 20px;position: absolute;left: 0;top: 0px;border-radius: 50%;overflow: hidden;}
@@ -561,7 +579,7 @@ export default {
   height: 17px;
   position: absolute;
   right: 15px;
-  top: 12px;
+  top: 7px;
   cursor: pointer;
 }
 .thirdwarp {

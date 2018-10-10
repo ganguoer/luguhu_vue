@@ -80,6 +80,7 @@
     height: 80px;
     line-height: 80px;
     width: 110px;
+    text-align: center;
   }
 
   .index_nav .nav_cont ul li a {
@@ -87,7 +88,7 @@
   }
 
   .index_nav .nav_cont ul li.active {
-    background: url(../../../static/images/navA.png) no-repeat 26px -10px;
+    background: url(../../../static/images/navA.png) no-repeat 32px -6px;
   }
 
   .index_nav .nav_cont ul li.active a {

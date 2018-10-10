@@ -9,7 +9,7 @@
           <div class="lf img_lfs"><img src="../../../static/images/zxs_09.png"></div>
           <div class="lf right_cont">
             <p class="bigtit">泸沽湖环境综合整治让“高原明珠”再放光彩</p>
-            <p class="moredetail">被称为“高原明珠”的泸沽湖地处云南省宁蒗县与四川省盐源县交界处，是国家４Ａ级风景区。今年53岁的李尚林是云南丽江泸沽湖省级旅游区管理委员... <router-link to="" class="mores">[详情]</router-link></p>
+            <p class="moredetail">被称为“高原明珠”的泸沽湖地处云南省宁蒗县与四川省盐源县交界处，是国家４Ａ级风景区。今年53岁的李尚林是云南丽江泸沽湖省级旅游区管理委员... <router-link to="/newsdetail" class="mores">[详情]</router-link></p>
             <p class="clearfix details_txt"><span class="lf">来源：泸沽湖资讯网</span><span class="lf times">2018-07-31   09:30:11</span></p>
           </div>
         </li>
@@ -17,7 +17,7 @@
           <div class="lf img_lfs"><img src="../../../static/images/zxs_05.png"></div>
           <div class="lf right_cont">
             <p class="bigtit">丽江泸沽湖签约中智游打造智慧景区标杆</p>
-            <p class="moredetail">近日，丽江泸沽湖旅游开发有限公司基于云南省政府“一部手机游云南”项目要求和自身管理服务需求，开展“云南泸沽湖景区智慧旅游建设项目”公开招标工作... <router-link to="" class="mores">[详情]</router-link></p>
+            <p class="moredetail">近日，丽江泸沽湖旅游开发有限公司基于云南省政府“一部手机游云南”项目要求和自身管理服务需求，开展“云南泸沽湖景区智慧旅游建设项目”公开招标工作... <router-link to="/newsdetail" class="mores">[详情]</router-link></p>
             <p class="clearfix details_txt"><span class="lf">来源：泸沽湖资讯网</span><span class="lf times">2018-07-31   09:30:11</span></p>
           </div>
         </li>
@@ -25,7 +25,7 @@
           <div class="lf img_lfs"><img src="../../../static/images/zxs_03.png"></div>
           <div class="lf right_cont">
             <p class="bigtit">四川凉山目标:年底泸沽湖确保成功创建国家5A景区</p>
-            <p class="moredetail">近日，四川凉山州召开A级景区创建工作会议，总结全州景区创建工作，安排部署创建目标任务。会议明确创建目标：今年年底，泸沽湖确保成功创建国家5A级旅游景区... <router-link to="" class="mores">[详情]</router-link></p>
+            <p class="moredetail">近日，四川凉山州召开A级景区创建工作会议，总结全州景区创建工作，安排部署创建目标任务。会议明确创建目标：今年年底，泸沽湖确保成功创建国家5A级旅游景区... <router-link to="/newsdetail" class="mores">[详情]</router-link></p>
             <p class="clearfix details_txt"><span class="lf">来源：泸沽湖资讯网</span><span class="lf times">2018-07-31   09:30:11</span></p>
           </div>
         </li>
@@ -33,7 +33,7 @@
           <div class="lf img_lfs"><img src="../../../static/images/travellist1.png"></div>
           <div class="lf right_cont">
             <p class="bigtit">泸沽湖景区川滇联席会议召开 共商开发管理与保护</p>
-            <p class="moredetail">为进一步加强联系、增进了解、推动协作，共商泸沽湖开发管理与保护事宜。日前，泸沽湖景区川滇联席会议召开。会上，四川省凉山州摩梭家园暨泸沽湖旅游景区管理局与云南...  <router-link to="" class="mores">[详情]</router-link></p>
+            <p class="moredetail">为进一步加强联系、增进了解、推动协作，共商泸沽湖开发管理与保护事宜。日前，泸沽湖景区川滇联席会议召开。会上，四川省凉山州摩梭家园暨泸沽湖旅游景区管理局与云南...  <router-link to="/newsdetail" class="mores">[详情]</router-link></p>
             <p class="clearfix details_txt"><span class="lf">来源：泸沽湖资讯网</span><span class="lf times">2018-07-31   09:30:11</span></p>
           </div>
         </li>

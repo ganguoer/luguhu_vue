@@ -40,7 +40,7 @@
             <h3>热点资讯</h3>
             <ul class="zxnews">
               <li class="clearfix">
-                <router-link to="/newsdetail"> 
+                <router-link to="/newsdetail">
                   <span class="lf">1</span>
                   <span class="lf textss">丽江古城和泸沽湖将限...</span>
                 </router-link>
