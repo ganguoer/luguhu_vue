@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Index from '@/components/Index'   //首页
 import charm from '@/components/charm/charm'  //魅力泸沽湖
+import charmlist from '@/components/charm/charmlist'  //魅力泸沽湖
 import charmVR from '@/components/charm/charmVR'
 
 import latestInformation from '@/components/latestInformation/latestInformation'  //泸沽湖资讯
@@ -42,6 +43,11 @@ export default new Router({
       path: '/charm',   //魅力泸沽湖
       name: 'charm',
       component: charm
+    },
+    {
+      path: '/charmlist',   //魅力泸沽湖
+      name: 'charmlist',
+      component: charmlist
     },
     {
       path: '/charmVR',

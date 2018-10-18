@@ -7,19 +7,13 @@
       <div class="charm_t">
         <div class="charm_title">
           <span><img class="triangle" src="../../../static/images/triangle.png" alt="">购在泸沽湖</span>
-          <p class="address">当前位置：首页>旅游攻略>购在泸沽湖><span>摩梭民歌唱片</span></p>
+          <p class="address">当前位置：首页>旅游攻略>购在泸沽湖><span>{{shopdetails.title}} </span></p>
         </div>
 
         <div class="tour_artile">
-          <h6>摩梭民歌唱片</h6>
-          <div class="section">
-            <p>摩梭族人倚泸沽湖而居，宁静圣洁的环境也造就了摩梭族人淳朴特色的民族文化。他们纯净悠远的歌声也随之深入人心。摩梭人创造风格的歌曲，大致可分为节日活动、山歌、情歌、生产劳动等类型。当地的“女儿国组合”及更加有名的左小祖咒和朱婧等也对这片圣洁的土地大大歌颂过。购买一张唱片，留作纪念，当作远方的回忆吧。</p>
-          </div>
-          <div class="section">
-            <img src="../../../static/images/strategy1.png" alt="">
-          </div>
-          <div class="section">
-            <img src="../../../static/images/strategy2.png" alt="">
+          <h6>{{shopdetails.title}} </h6>
+          <div class="section" v-html=" shopdetails.content">
+
           </div>
         </div>
       </div>
@@ -39,8 +33,22 @@
     data () {
       return {
         bactive: 5,
-        bheader: 1
+        bheader: 1,
+        shopdetails:''
       }
+    },
+    created: function() {
+      var newsID=this.$route.query.id;
+      this.axios.get(this.config.info.getArticalById,{
+        params:{
+          id:newsID
+        }
+      }).then((response) => {
+        console.log(response.data.data);
+        this.shopdetails =response.data.data;
+      }).catch(function(error) {
+        console.log(error);
+      });
     },
     components: {
       'v-header': header,
@@ -110,4 +118,10 @@
     height: 436px;
     margin: 30px auto;
   }
+  >>>p img{
+       width: 680px;
+       height: 450px;
+       margin: 30px auto;
+       margin-left: 150px;
+     }
 </style>

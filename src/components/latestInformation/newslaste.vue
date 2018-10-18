@@ -5,47 +5,63 @@
         <span class="rf location_current">当前位置：首页><em>最新资讯</em></span>
       </div>
       <ul class="listnews">
-        <li class="clearfix">
-          <div class="lf img_lfs"><img src="../../../static/images/zxs_19.png"></div>
+        <li class="clearfix" v-for="(item,index) in news" :key="index">
+          <div class="lf img_lfs"><img :src="imgSrc+ item.images "></div>
           <div class="lf right_cont">
-            <p class="bigtit">丽江旅游拟投30亿在泸沽湖建摩梭旅游小镇</p>
-            <p class="moredetail">丽江旅游一直希望将泸沽湖作为“第二主战场”。2012年，在泸沽湖投资建设牛开地片区度假村、里格精品度假村两个项目，总投资额预计14亿元... <router-link to="/newsdetail" class="mores">[详情]</router-link></p>
-            <p class="clearfix details_txt"><span class="lf">来源：泸沽湖资讯网</span><span class="lf times">2018-07-31   09:30:11</span></p>
-          </div>
-        </li>
-        <li class="clearfix">
-          <div class="lf img_lfs"><img src="../../../static/images/zxs_21.png"></div>
-          <div class="lf right_cont">
-            <p class="bigtit">泸沽湖 将实行游客限流管控</p>
-            <p class="moredetail">据《人民日报》报道，继丽江玉龙雪山每天游客量限制在1万人后，云南丽江市市长郑艺近日接受采访时透露，热门景区丽江古城、泸沽湖也将实行流量管控... <router-link to="/newsdetail" class="mores">[详情]</router-link></p>
-            <p class="clearfix details_txt"><span class="lf">来源：泸沽湖资讯网</span><span class="lf times">2018-07-31   09:30:11</span></p>
-          </div>
-        </li>
-        <li class="clearfix">
-          <div class="lf img_lfs"><img src="../../../static/images/zxs_16.png"></div>
-          <div class="lf right_cont">
-            <p class="bigtit">滇川渝在泸沽湖景区开展旅游市场检查并签订三方两地旅游综合监管合作框架协议</p>
-            <p class="moredetail">为贯彻落实党中央、国务院部署的“扫黑除恶”专项行动任务和国家文化和旅游部部署的暑期旅游市场秩序专项整治精神，进一步加强泸沽湖旅游市场综合监督管理... <router-link to="/newsdetail" class="mores">[详情]</router-link></p>
-            <p class="clearfix details_txt"><span class="lf">来源：泸沽湖资讯网</span><span class="lf times">2018-07-31   09:30:11</span></p>
-          </div>
-        </li>
-        <li class="clearfix">
-          <div class="lf img_lfs"><img src="../../../static/images/zxs_09.png"></div>
-          <div class="lf right_cont">
-            <p class="bigtit">川滇两省达成框架协议 共同保护治理泸沽湖</p>
-            <p class="moredetail">7月19日，川滇两省共同保护治理泸沽湖工作会议在成都举行。会上，四川和云南达成框架性合作协议，决定强化协作、协同启动相关保护治理行动，守护一湖清水...  <router-link to="/newsdetail" class="mores">[详情]</router-link></p>
-            <p class="clearfix details_txt"><span class="lf">来源：泸沽湖资讯网</span><span class="lf times">2018-07-31   09:30:11</span></p>
+            <p class="bigtit">{{item.title}}</p>
+            <p class="moredetail">{{item.content}} <router-link :to="{path:'/newsdetail',query:{ id:item.id}}" class="mores">[详情]</router-link></p>
+            <p class="clearfix details_txt"><span class="lf">来源：{{item.origin}}</span><span class="lf times">{{item.creatTime}}</span></p>
           </div>
         </li>
       </ul>
+
+      <v-pagination :total="total" :display="display" :current-page='current' @pagechange="pagechange"></v-pagination>
     </div>
 </template>
 
 <script>
+  import pagination from '@/components/common/pagination'
   export default {
     name: '',
     data () {
-      return {}
+      return {
+        total: 0,     // 记录总条数
+        display: 4,   // 每页显示条数
+        current: 1,   // 当前的页数
+        news:[],
+        imgSrc:''
+      }
+    },
+    mounted(){
+      this.getNews();
+    },
+    methods: {
+      pagechange:function(currentPage){
+        console.log(currentPage);
+        // ajax请求, 向后台发送 currentPage, 来获取对应的数据
+        this.current = currentPage;
+        this.getNews();
+      },
+      getNews(){
+        var that=this;
+        that.imgSrc=that.config.imgsrc;
+        that.axios.get(that.config.info.getArtical,{
+          params : {   //请求参数
+            type: 101,
+            size:4,
+            page:that.current
+          }
+        })
+          .then(function (response){
+            console.log(response.data.data)
+            that.total = response.data.data.num;
+            console.log(that.total);
+            that.news=response.data.data.article;
+          })
+      },
+    },
+    components: {
+      'v-pagination': pagination
     }
   }
 

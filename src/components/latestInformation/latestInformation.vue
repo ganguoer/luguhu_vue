@@ -3,18 +3,15 @@
     <v-header v-bind:bactive="bactive" v-bind:bheader="bheader"></v-header>
     <div class="slider_warp">
       <ul>
-        <li>
-          <img src="../../../static/images/zxs_03.png">
+        <li v-for="(item,index) in imgs" :key="index">
+          <router-link to="/picturenews">
+            <img :src="imgSrc+ item.img_url " alt=''>
+            <p class="add_name">{{item.name}}</p>
+
+          </router-link>
         </li>
-        <li>
-          <img src="../../../static/images/zxs_05.png">
-        </li>
-        <li>
-          <img src="../../../static/images/zxs_07.png">
-        </li>
-        <li>
-          <img src="../../../static/images/zxs_09.png">
-        </li>
+
+
       </ul>
     </div>
     <div class="content_warp clearfix">
@@ -39,42 +36,13 @@
         <div class="hotzxun">
             <h3>热点资讯</h3>
             <ul class="zxnews">
-              <li class="clearfix">
-                <router-link to="/newsdetail">
-                  <span class="lf">1</span>
-                  <span class="lf textss">丽江古城和泸沽湖将限...</span>
+              <li v-for="(item,index) in hotInfo" :key="index">
+                <router-link  class="clearfix" :to="{path:'/newsdetail',query:{ id:item.id}}" >
+                  <span class="lf">{{index+1}}</span>
+                  <span class="lf textss">{{item.title}}</span>
                 </router-link>
               </li>
-              <li class="clearfix">
-                <router-link to="/newsdetail">
-                  <span class="lf">2</span>
-                  <span class="lf textss">川滇两省达成框架协议 ...</span>
-                </router-link>
-              </li>
-              <li class="clearfix">
-                <router-link to="/newsdetail">
-                  <span class="lf">3</span>
-                  <span class="lf textss">盐源县高标准推进泸沽</span>
-                </router-link>
-              </li>
-              <li class="clearfix">
-                <router-link to="/newsdetail">
-                  <span class="lf">4</span>
-                  <span class="lf textss">高峰到泸沽湖景区调研...</span>
-                </router-link>
-              </li>
-              <li class="clearfix">
-                <router-link to="/newsdetail">
-                  <span class="lf">5</span>
-                  <span class="lf textss">泸沽湖返成都旅游客车...</span>
-                </router-link>
-              </li>
-              <li class="clearfix">
-                <router-link to="/newsdetail">
-                  <span class="lf">6</span>
-                  <span class="lf textss">段琪督察泸沽湖河(湖)...</span>
-                </router-link>
-              </li>
+
             </ul>
           </div>
       </div>
@@ -95,40 +63,86 @@ export default {
   data() {
     return {
       bactive: 2,
-      bheader: 1
+      bheader: 1,
+      imgs:[],
+      hotInfo:[],
+      type: 101,
+      hotSpot: 1,
+      imgSrc:''
+
     }
   },
-  components: {
-    "v-header": header,
-    "v-footer": footer
-	},
-	mounted(){
+  mounted(){
+
     $(function(){
       $('.nav-second li').bind('click',function(){
         $('.nav-second li').removeClass('on')
         $(this).addClass('on');
       })
-    })
+    });
+
+    this.getImg();
+    this.getHotInfo();
+
+  },
+  methods:{
+    getImg(){
+      var that=this;
+      that.imgSrc =that.config.imgsrc;
+      that.axios.get(that.config.info.hotImg,{
+        params:{
+            size:4,
+            isHot:1
+          }
+      })
+        .then(function (response){
+//            console.log(response.data.data)
+          that.imgs=response.data.data;
+        })
+    },
+    getHotInfo(){
+      var self=this;
+        self.axios.get(self.config.info.articalHot,{
+        params : {   //请求参数
+          type: 101,
+          hotSpot: 1
+        }
+      })
+        .then(function (response) {
+          console.log(response);
+          self.hotInfo=response.data.data;
+
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  },
+  components: {
+    "v-header": header,
+    "v-footer": footer
 	}
 }
 </script>
 <style scoped>
 .zixun{color: #fff}
-.lf_changecont{width: 902px;margin:11px 0 0 26px}
+.lf_changecont{width: 902px;margin:11px 0 0 26px;padding-bottom: 20px;}
 .hotzxun{margin-top: 25px;width: 236px;margin-top: 27px;border-right: solid 1px #dcdcdc;border-top: solid 3px #1182e3; margin-left: 14px}
 .nav-second li{height: 52px;line-height: 52px;font-size: 14px; color: #666;border-bottom: solid 1px #dcdcdc}
 .nav-second .inner{padding-left:15px;display: block }
 .nav-second .on{background: #1182e3;color: #fff;}
 .nav-second .on .inner{color: #fff}
 .zxnews li{height: 30px; line-height: 30px;margin-bottom: 15px;padding-left: 15px}
-.zxnews .textss{margin-left: 8px;width: 160px;white-space: nowrap;text-overflow: ellipsis}
+.zxnews li a{width: 100%;height: 30px;display: block;}
+.zxnews .textss{margin-left: 8px;width: 160px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .nav-second li:last-child{border-bottom: none}
 .newslast{width: 236px;border: solid 1px #dcdcdc;margin: 14px;}
 .newslast h3, .hotzxun h3{color: #fff;font-size: 16px;height: 52px;line-height: 52px;background: #1182e3;padding-left: 15px;font-weight: normal}
 .hotzxun h3{background: #fff;color: #1182e3}
 .lf_warp{width: 265px;border-right: solid 1px #dcdcdc; background: #edf2f6}
 .content_warp{width: 1220px;margin: 0 auto;border: solid 1px #dcdcdc;margin-top: 10px; margin-bottom: 30px}
-.slider_warp ul li{width: 258px;height: 179px;border:solid 3px #fff; margin-right: 18px; float: left;}
+.slider_warp ul li{width: 258px;height: 179px;border:solid 3px #fff; margin-right: 18px; float: left;position: relative;}
+.slider_warp ul li a img{width: 100%;height:100%;}
 .slider_warp ul li:last-child{margin-right: 0}
 .slider_warp{width: 1220px;height: 216px;border-top: solid 6px #ffd200;margin: 0 auto; margin-top: 350px;background: #a7cdeb;}
 .slider_warp ul{height: 184px;width: 1110px;overflow: hidden; margin-top: 13px; margin-left: 55px;}
@@ -137,5 +151,16 @@ export default {
   width: 100%;
   height: 100%;
 }
-
+.add_name{
+  width: 100%;
+  height:34px;
+  line-height: 34px;
+  background-color: rgba(0,0,0,0.4);
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
 </style>

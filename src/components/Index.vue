@@ -33,7 +33,7 @@
           <div class="lf texts">
             <h3>最新资讯</h3>
             <p class="titles">丽江旅游拟投30亿在泸沽湖建摩梭旅游小镇</p>
-            <p class="detail_tit">丽江旅游一直希望将泸沽湖作为“第二主战潮。2012年，在泸沽湖投资建设牛开地片... <router-link to=""> <span class="moredetail">【详情】</span></router-link></p>
+            <p class="detail_tit">丽江旅游一直希望将泸沽湖作为“第二主战潮。2012年，在泸沽湖投资建设牛开地片... <router-link to="/newszixun"> <span class="moredetail">【详情】</span></router-link></p>
           </div>
         </div>
       </div>
@@ -47,39 +47,9 @@
             <div class="Cooldog_container">
                 <div class="Cooldog_content">
                     <ul>
-                        <li class="p1">
+                        <li class="p1" v-for="(item,index) in imgs" :key="index">
                             <a href="javascript:;">
-                                <img src="../../static/images/index_23.png" alt="">
-                            </a>
-                        </li>
-                        <li class="p2">
-                            <a href="javascript:;">
-                                <img src="../../static/images/index_26.png" alt="">
-                            </a>
-                        </li>
-                        <li class="p3">
-                            <a href="javascript:;">
-                                <img src="../../static/images/index_28.jpg" alt="">
-                            </a>
-                        </li>
-                        <li class="p4">
-                            <a href="javascript:;">
-                                <img src="../../static/images/index_23.png" alt="">
-                            </a>
-                        </li>
-                        <li class="p5">
-                            <a href="javascript:;">
-                                <img src="../../static/images/index_26.png" alt="">
-                            </a>
-                        </li>
-                        <li class="p6">
-                            <a href="javascript:;">
-                                <img src="../../static/images/index_28.jpg" alt="">
-                            </a>
-                        </li>
-                        <li class="p7">
-                            <a href="javascript:;">
-                                <img src="../../static/images/index_28.jpg" alt="">
+                                <img :src="imgSrc+ item.img_url " alt="">
                             </a>
                         </li>
                     </ul>
@@ -117,40 +87,10 @@
                 </div>
             </div>
             <ul class="news_list">
-                <li class="clearfix">
-                    <router-link to="">
-                        <span class="lf">泸沽湖，云南海拔最高的湖泊，湖中有5个全岛、3个半岛</span>
-                        <span class="rf">[2018-07-05]</span>
-                    </router-link>
-                </li>
-                <li class="clearfix">
-                    <router-link to="">
-                        <span class="lf">泸沽湖，云南海拔最高的湖泊，湖中有5个全岛、3个半岛</span>
-                        <span class="rf">[2018-07-05]</span>
-                    </router-link>
-                </li>
-                <li class="clearfix">
-                    <router-link to="">
-                        <span class="lf">泸沽湖，云南海拔最高的湖泊，湖中有5个全岛、3个半岛</span>
-                        <span class="rf">[2018-07-05]</span>
-                    </router-link>
-                </li>
-                <li class="clearfix">
-                    <router-link to="">
-                        <span class="lf">泸沽湖，云南海拔最高的湖泊，湖中有5个全岛、3个半岛</span>
-                        <span class="rf">[2018-07-05]</span>
-                    </router-link>
-                </li>
-                <li class="clearfix">
-                    <router-link to="">
-                        <span class="lf">泸沽湖，云南海拔最高的湖泊，湖中有5个全岛、3个半岛</span>
-                        <span class="rf">[2018-07-05]</span>
-                    </router-link>
-                </li>
-                <li class="clearfix">
-                    <router-link to="">
-                        <span class="lf">泸沽湖，云南海拔最高的湖泊，湖中有5个全岛、3个半岛</span>
-                        <span class="rf">[2018-07-05]</span>
+                <li class="clearfix" v-for="(item,index) in hotInfos" :key="index">
+                    <router-link :to="{path:'/newsdetail',query:{ id:item.id}}" >
+                        <span class="lf">{{item.title}}</span>
+                        <span class="rf">[{{item.creatTime}}]</span>
                     </router-link>
                 </li>
             </ul>
@@ -159,21 +99,11 @@
   </div>
   <div class="thirdwarp">
       <ul class="scenic_spot clearfix">
-          <li>
-              <div class="img_wrap"><img src="../../static/images/index2.jpg"></div>
-              <p>花楼恋歌</p>
-          </li>
-          <li>
-              <div class="img_wrap"><img src="../../static/images/indexs.jpg"></div>
-              <p>大落水商业区</p>
-          </li>
-          <li>
-              <div class="img_wrap"><img src="../../static/images/indexsd.jpg"></div>
-              <p>杨二车那木国际艺术博物馆</p>
-          </li>
-          <li>
-              <div class="img_wrap"><img src="../../static/images/indexsda.jpg"></div>
-              <p>摩梭民俗博物馆</p>
+          <li v-for="(item,index) in shopList" :key="index">
+            <router-link :to="{path:'/shopping_s',query:{ id:item.id}}" >
+              <div class="img_wrap"><img :src="imgSrc+ item.images"></div>
+              <p>{{item.title}}</p>
+            </router-link>
           </li>
       </ul>
       <div class="bottoms_tip"></div>
@@ -183,89 +113,29 @@
             <router-link to="" class="rf mores">更多>></router-link>
         </div>
         <ul class="list_imgs clearfix">
-            <li>
+            <li v-for="(item,index) in scenicList" :key="index">
                 <div class="imgs">
-                    <img src="../../static/images/index2.jpg">
-                    <router-link to="" class="modetails">查看详情</router-link>
+                    <img :src="imgSrc+ item.images">
+                    <router-link :to="{path:'/scenic_s',query:{ id:item.id}}" class="modetails">查看详情</router-link>
                 </div>
-                <p>泸沽湖风景区</p>
+                <p>{{item.title}}</p>
             </li>
-            <li>
-                <div class="imgs">
-                    <img src="../../static/images/indexs.jpg">
-                    <router-link to="" class="modetails">查看详情</router-link>
-                </div>
-                <p>大落水村</p>
-            </li>
-            <li>
-                <div class="imgs">
-                    <img src="../../static/images/indexsd.jpg">
-                    <router-link to="" class="modetails">查看详情</router-link>
-                </div>
-                <p>里个雾里岛</p>
-            </li>
-            <li>
-                <div class="imgs">
-                    <img src="../../static/images/indexsda.jpg">
-                    <router-link to="" class="modetails">查看详情</router-link>
-                </div>
-                <p>泸沽湖风景区</p>
-            </li>
+
         </ul>
       </div>
       <div class="hot_scenic mt48">
         <div class="banners clearfix">
-           <div class="everywarp lf active">
-               <span class="iconcom hotelbg hotelbg1"></span>
+           <div class="everywarp lf" v-for="(item,index) in tabs"    :class="{active:index == num}"    @click="num=index,tabChange('select' + (index + 1))">
+               <span class="iconcom hotelbg" :class="item.hotelclass"></span>
                <span class="sangle"></span>
-               酒店
+               {{item.title}}
             </div>
-            <div class="everywarp lf">
-               <span class="iconcom hotelbg hotelbg2"></span>
-               <span class="sangle"></span>
-               餐饮
-            </div>
-            <div class="everywarp lf">
-               <span class="iconcom hotelbg hotelbg3"></span>
-               <span class="sangle"></span>
-               购物
-            </div>
-            <div class="everywarp lf">
-               <span class="iconcom hotelbg hotelbg4"></span>
-               <span class="sangle"></span>
-               交通
-            </div>
+
         </div>
-        <ul class="list_imgs clearfix">
-            <li>
-                <div class="imgs">
-                    <img src="../../static/images/index2.jpg">
-                    <router-link to="" class="modetails">查看详情</router-link>
-                </div>
-                <p>泸沽湖水墨禅境湖景度假酒店</p>
-            </li>
-            <li>
-                <div class="imgs">
-                    <img src="../../static/images/indexs.jpg">
-                    <router-link to="" class="modetails">查看详情</router-link>
-                </div>
-                <p>泸沽湖听花堂海景花园客栈</p>
-            </li>
-            <li>
-                <div class="imgs">
-                    <img src="../../static/images/indexsd.jpg">
-                    <router-link to="" class="modetails">查看详情</router-link>
-                </div>
-                <p>泸沽湖·蜜悦·秘密花园客栈</p>
-            </li>
-            <li>
-                <div class="imgs">
-                    <img src="../../static/images/indexsda.jpg">
-                    <router-link to="" class="modetails">查看详情</router-link>
-                </div>
-                <p>泸沽湖朴宿海景度假客栈</p>
-            </li>
-        </ul>
+        <keep-alive>
+          <component :is="tabView"></component>
+        </keep-alive>
+
       </div>
   </div>
   <div class="fourwarp">
@@ -278,11 +148,11 @@
         </div>
     </div>
     <ul class="ul_contlist">
-        <li class="clearfix">
-            <div class="lf contl_img"><img src="../../static/images/index_23.png"></div>
+        <li class="clearfix" v-for="(item,index) in travelList" :key="index">
+            <div class="lf contl_img"><img :src="imgSrc + item.images"></div>
             <div class="lf text_p">
-                <p class="titles_1">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
-                <p class="titles_2">听说， 来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟知的地方从容体验，如丽江大理。而泸沽湖，无论计划哪一种都可以把其列入list，分...</p>
+                <p class="titles_1">{{item.title}}</p>
+                <p class="titles_2">{{item.content}}</p>
                 <div class="bottom_tip clearfix">
                     <div class="lf bips">
                         <span class="iconcom areas"></span>
@@ -307,26 +177,55 @@
 <script>
 import '../../static/js/Cooldog.js'
 import footer from "@/components/common/footer";
+import select1 from "@/components/component_child/tabTransport";
+import select2 from "@/components/component_child/tabTransport";
+import select3 from "@/components/component_child/tabTransport";
+import select4 from "@/components/component_child/tabTransport";
 $(function(){
     $('.list_imgs li').hover(function(){
-        $(this).find('.modetails').show(300);
+        $(this).find('.modetails').fadeIn(300);
     },function(){
-        $(this).find('.modetails').hide(300);
+        $(this).find('.modetails').fadeOut(300);
     })
 })
 export default {
   name: "Index",
   data() {
-    return {};
+    return {
+      tabs:[
+        {title:'酒店',hotelclass:'hotelbg1'},
+        {title:'餐饮',hotelclass:'hotelbg2'},
+        {title:'购物',hotelclass:'hotelbg3'},
+        {title:'交通',hotelclass:'hotelbg4'}
+       ],
+      num:0,
+      tabView: 'select1',
+      hotInfos:[],
+      imgs:[],
+      shopList:[],
+      scenicList:[],
+      hotelList:[],
+      travelList:[],
+    };
   },
   computed: {},
   components: {
-    "v-footer": footer
-    },
+    "v-footer": footer,
+    select1,
+    select2,
+    select3,
+    select4,
+  },
   mounted() {
     this.showTime();
     let windowh = $(window).height();
     $(".index").css({ height: windowh });
+    this.gethotInfos();
+    this.getImg();
+    this.shopLists();
+    this.scenicLists();
+    this.hotelLists();
+    this.travelLists();
   },
   methods: {
     add() {
@@ -355,6 +254,95 @@ export default {
       $(".dates_day").html(date); // 将格式化后的内容装载到容器中
       console.log(str);
       console.log(date);
+    },
+    getImg(){
+      var that=this;
+      that.imgSrc =that.config.imgsrc;
+      that.axios.get(that.config.info.hotImg,{
+        params:{
+          size:6
+        }
+      })
+        .then(function (response){
+            console.log(response.data.data)
+          that.imgs=response.data.data;
+        })
+    },
+    gethotInfos(){
+      var that=this;
+      that.imgSrc =that.config.imgsrc;
+      that.axios.get(that.config.info.getArtical,{
+        params : {   //请求参数
+          type: 102,
+          size:6,
+          page:1
+        }
+      })
+        .then(function (response){
+          console.log(response.data.data);
+          that.hotInfos=response.data.data.article;
+        })
+    },
+    tabChange(tab){
+      this.tabView = tab;
+    },
+    shopLists(){
+      var that=this;
+      that.imgSrc =that.config.imgsrc;
+      that.axios.get(that.config.info.getArtical,{
+        params : {   //请求参数
+          type: 107,
+          size:4,
+          page:1
+        }
+      })
+        .then(function (response){
+          console.log(response.data.data)
+          that.shopList=response.data.data.article;
+        })
+    },
+    scenicLists(){
+      var that=this;
+      that.imgSrc =that.config.imgsrc;
+      that.axios.get(that.config.info.getArtical,{
+        params : {   //请求参数
+          type: 103,
+          size:4,
+          page:1
+        }
+      })
+        .then(function (response){
+          console.log(response.data.data)
+          that.scenicList=response.data.data.article;
+        })
+    },
+    hotelLists(){
+      var that=this;
+      that.imgSrc =that.config.imgsrc;
+      that.axios.get(that.config.tourism.getHotel,{
+        params : {   //请求参数
+          size:4,
+          page:1
+        }
+      })
+        .then(function (response){
+          console.log(response.data.data)
+          that.hotelList=response.data.data.hotel;
+        })
+    },
+    travelLists(){
+      var that=this;
+      that.axios.get(that.config.info.getArtical,{
+        params : {   //请求参数
+          type: 108,
+          size:2,
+          page:1
+        }
+      })
+        .then(function (response){
+          console.log(response.data.data)
+          that.travelList=response.data.data.article;
+        })
     }
   }
 };
@@ -368,11 +356,13 @@ export default {
 .bips_1{padding-left: 25px; color: #ffd200}
 .bottom_tip{margin-top: 60px;}
 .contl_img{width: 298px;height: 173px;}
+.contl_img img{width: 100%;height: 100%;}
+
 .titles_1{font-size: 16px;}
 .titles_2{color:#848484;padding-top: 15px;height: 48px;line-height: 24px; display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;}
 .text_p{margin-left: 30px;width: 700px;}
 .ul_contlist{margin-top: 45px;}
-.ul_contlist li{margin-bottom: 20px}
+.ul_contlist li{margin-bottom: 36px}
 .icon_write{width: 13px;height: 14px; background-position: -200px -100px;position: absolute;left: 16px;top: 8px;}
 .writes{background: url(../../static/images/index_19.png);width: 68px;height: 32px; cursor: pointer; line-height: 32px; color: #fff;text-align: right;position: relative;padding-right: 20px;font-size: 12px}
 .fourwarp .titles{height: 52px; line-height: 52px;border-bottom: solid 1px #898989;width: 100%;font-size: 16px; padding: 0 15px}
@@ -384,6 +374,7 @@ export default {
 .list_imgs li{float: left;width: 284px;margin-right: 11px}
 .list_imgs li:last-child{margin-right: 0}
 .list_imgs .imgs{width: 284px;height: 205px;box-shadow:2px 2px 10px #888888; overflow: hidden;position: relative;}
+.list_imgs .imgs img{width: 100%;height: 100%;}
 .list_imgs p{text-align: center;color: #1182e3;font-size: 16px;padding-top: 18px;}
 .list_imgs{margin-top: 38px;}
 .hot_scenic{width: 1170px; height: 350px;padding:25px 15px;background:rgba(255,255,255,.4); margin: 0 auto; box-shadow: 4px 4px 15px #888888;margin-top: 40px}
@@ -405,7 +396,7 @@ export default {
 .scenic_spot li:last-child{margin-right: 0}
 .news_list{margin-top: 15px;height: 180px;overflow: hidden;}
 .news_list li{height: 30px; line-height: 30px; overflow: hidden;}
-.news_list li .lf{width: 70%;overflow: hidden;height: 36px;}
+.news_list li .lf{width: 340px;overflow: hidden;height: 36px;text-overflow:ellipsis;white-space: nowrap;}
 .news_detail .text_cont{width: 350px; margin-left: 18px;font-size: 14px;}
 .news_detail .firstp{height: 25px; line-height: 25px;overflow:hidden;}
 .news_detail .secondp{color: #898989;height: 54px;line-height: 18px;overflow: hidden;}

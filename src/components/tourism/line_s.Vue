@@ -7,33 +7,13 @@
       <div class="charm_t">
         <div class="charm_title">
           <span><img class="triangle" src="../../../static/images/triangle.png" alt="">线路游览</span>
-          <p class="address">当前位置：首页>旅游攻略>><span>线路游览</span></p>
+          <p class="address">当前位置：首页>旅游攻略>><span>{{lineDetails.title}} </span></p>
         </div>
 
-        <div class="tour_artile">
-          <h6>成都出发西昌泸沽湖自驾4日游 </h6>
-          <h6>行程参考</h6>
-          <div class="section">
-            <p>第1天 ：成都—西昌（440km）</p>
-            <p> 收拾好行李准备出发!早上到新津服务区集合，小队长分发对讲机、车贴，随后全军出击，经成雅、雅西高速前往石棉，到达石棉品尝当地特色农家菜，餐后出发前往西昌,入住酒店，晚餐。 </p>
-          </div>
-          <div class="section">
-            <p>第2天：西昌—泸沽湖（270km） </p>
-            <p>早餐后出发经盐源，前往风景美哭的女儿国—泸沽湖，到达泸沽湖后入住酒店，稍作休息，午餐后尽情享受泸沽湖的美丽风光，天水一色，随后进行晚餐，餐后可感受泸沽湖的夜晚。</p>
-          </div>
-          <div class="section">
-            <p>第3天：泸沽湖—盐源（138KM） </p>
-            <p>酒店morning call，早餐后，随后自行游览泸沽湖，在泸沽湖可租赁自行车、电动车环湖，也可开着自己的爱车游玩.午后出发前往盐源，随后入住酒店。</p>
-          </div>
-          <div class="section">
-            <p>第4天：盐源—成都（550KM）</p>
-            <p>酒店叫早，然后可以前往水果市场购买点当地特色水果，之后驾车边走边吃返回成都，结束愉快的自驾之旅。</p>
-          </div>
-          <div class="section">
-            <img src="../../../static/images/strategy10.png" alt="">
-          </div>
-          <div class="section">
-            <img src="../../../static/images/strategy11.png" alt="">
+        <div class="tour_artile" >
+          <h6>{{lineDetails.title}} </h6>
+          <div class="section" v-html="lineDetails.content">
+
           </div>
         </div>
       </div>
@@ -53,8 +33,23 @@
     data () {
       return {
         bactive: 5,
-        bheader: 1
+        bheader: 1,
+        lineDetails:''
       }
+    },
+    created: function() {
+      var lineID=this.$route.query.id;
+      this.imgSrc =this.config.imgsrc;
+      this.axios.get(this.config.info.getArticalById,{
+        params:{
+          id:lineID
+        }
+      }).then((response) => {
+        console.log(response.data.data);
+        this.lineDetails =response.data.data;
+      }).catch(function(error) {
+        console.log(error);
+      });
     },
     components: {
       'v-header': header,
@@ -124,4 +119,10 @@
     height: 450px;
     margin: 30px auto;
   }
+  >>>p img{
+       width: 680px;
+       height: 450px;
+       margin: 30px auto;
+       margin-left: 150px;
+     }
 </style>

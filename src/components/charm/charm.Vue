@@ -11,67 +11,67 @@
           <p class="address">当前位置：首页><span>魅力泸沽湖</span></p>
         </div>
         <div class="charm_des">
-          <img src="../../../static/images/charm1.png" alt="">
-          <div class="description">
-            <h6>魅力泸沽湖 /Charming lugu lake</h6>
-            <p>
-              泸沽湖古称鲁窟海子，又名左所海，俗称亮海。纳西族摩梭语“泸”为山沟，“沽”为里，意即山沟里的湖。泸沽湖旅游景区四周崇山峻岭，一年有三个月以上的积雪期。森林资源丰富，山清水秀，空气清新，景色迷人，泸沽湖被当地摩梭人奉为“母亲湖”。也被人们誉为“蓬莱仙境”。身临其境，水天一色，水平如镜，缓缓滑行于碧波之上的猪槽船和徐徐漂浮于水天之间的摩梭民歌，使其更增添几分古朴，几分宁静，是一个远离嚣市、未被污染的处女湖，有高原明珠的美誉。每逢晴天，蓝天白云，倒映湖中，水天一色，景象奇丽。它犹如一块明珠镶嵌在群山怀抱之中，碧波荡漾，风光迷人，有“高原明珠”、“滇西北的一片净土”、“东方第一奇景”等美称。这里古朴的民风，秀丽的山光水色与浓郁的传奇风情，充满了神秘的色彩。</p>
+          <img :src="imgSrc+ scenicIntro.imgUrl " alt="">
+          <div class="description" v-html="scenicIntro.article_content">
+
           </div>
         </div>
       </div>
 
       <div class="charm_list">
         <ul class="clearfix">
-          <li><img src="../../../static/images/shexiang1.png" alt=""></li>
+          <li><img :src="imgSrc+scenicVR[0].imgUrl " alt=""></li>
           <li class="bg1">
-            <router-link to='charmVR'>
+            <router-link :to="{path:'/charmVR',query:{ id:scenicVR[0].id}}">
               <div class="mask_charm">
               <img class="shex" src="../../../static/images/shexiang.png" alt="">
-              <p class="s_title">泸沽湖风景区VR全景</p>
-              <p class="s_eng">Lugu lake scenic area VR panorama</p>
+              <p class="s_title">{{scenicVR[0].title}}</p>
+              <p class="s_eng">{{scenicVR[0].remarks}}</p>
               </div>
             </router-link>
           </li>
-          <li><img src="../../../static/images/shexiang2.png" alt=""></li>
+          <li><img :src="imgSrc+scenicVR[1].imgUrl " alt=""></li>
           <li class="bg2">
-            <router-link to='charmVR'>
+            <router-link :to="{path:'/charmVR',query:{ id:scenicVR[1].id}}">
               <div class="mask_charm">
               <img class="shex" src="../../../static/images/shexiang.png" alt="">
-              <p class="s_title">大落水村VR全景</p>
-              <p class="s_eng">Daluoshui Village VR Panorama</p>
+              <p class="s_title">{{scenicVR[1].title}}</p>
+              <p class="s_eng">{{scenicVR[1].remarks}}</p>
               </div>
             </router-link>
           </li>
           <li class="bg3">
-            <router-link to='charmVR'>
+            <router-link :to="{path:'/charmVR',query:{ id:scenicVR[2].id}}">
               <div class="mask_charm">
               <img class="shex" src="../../../static/images/shexiang.png" alt="">
-              <p class="s_title">祭神台VR全景</p>
-              <p class="s_eng">Festival of God VR Panorama</p>
+              <p class="s_title">{{scenicVR[2].title}}</p>
+              <p class="s_eng">{{scenicVR[2].remarks}}</p>
               </div>
             </router-link>
           </li>
           <li>
-            <img src="../../../static/images/shexiang3.png" alt="">
+            <img :src="imgSrc+scenicVR[2].imgUrl "  alt="">
           </li>
           <li class="ex ">
-            <img class="ex" src="../../../static/images/shexiang4.png" alt="">
-            <p class="exp">摩梭民俗博物馆VR全景</p>
+            <router-link :to="{path:'/charmVR',query:{ id:scenicVR[3].id}}">
+            <img class="ex" :src="imgSrc+scenicVR[3].imgUrl"  alt="">
+            <p class="exp">{{scenicVR[3].title}}</p>
+            </router-link>
           </li>
-          <li><img src="../../../static/images/shexiang5.png" alt=""></li>
+          <li><img :src="imgSrc+scenicVR[4].imgUrl" alt=""></li>
           <li class="bg4">
-            <router-link to='charmVR'>
+            <router-link :to="{path:'/charmVR',query:{ id:scenicVR[4].id}}">
               <div class="mask_charm">
               <img class="shex" src="../../../static/images/shexiang.png" alt="">
-              <p class="s_title">里务比寺VR全景</p>
-              <p class="s_eng">Philippine Temple VR Panorama</p>
+              <p class="s_title">{{scenicVR[4].title}}</p>
+              <p class="s_eng">{{scenicVR[4].remarks}}</p>
               </div>
             </router-link>
           </li>
           <li class="ex">
             <img class="ex" src="../../../static/images/shexiang6.png" alt="">
             <div class="mode">
-              <router-link to="index">查看更多</router-link>
+              <router-link to="/charmlist">查看更多</router-link>
             </div>
           </li>
         </ul>
@@ -93,7 +93,47 @@
     data () {
       return {
         bactive: 4,
-        bheader: 1
+        bheader: 1,
+        scenicIntro:{},
+        scenicVR:{},
+        imgSrc:''
+      }
+    },
+    mounted(){
+        this.getSceInfo();
+        this.getVR();
+    },
+    methods:{
+        getSceInfo(){
+            var that=this;
+          that.imgSrc =that.config.imgsrc;
+          that.axios.get(that.config.charm.getScenicById,{
+            params:{
+              id:2
+            }
+          }).then((response) => {
+            console.log(response.data.data);
+            that.scenicIntro =response.data.data;
+
+          }).catch(function(error) {
+            console.log(error);
+          });
+        },
+       getVR(){
+            var self=this;
+         self.axios.get(self.config.charm.getScenicVideo,{
+          params:{
+            page:1,
+            size:10,
+            id:2
+          }
+        }).then((response) => {
+          console.log(response.data.data);
+           self.scenicVR =response.data.data.scenicVideo;
+
+        }).catch(function(error) {
+          console.log(error);
+        });
       }
     },
     components: {

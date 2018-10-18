@@ -6,23 +6,23 @@
 
       <div class="charm_t">
         <div class="charm_title">
-          <span><img class="triangle" src="../../../static/images/triangle.png" alt="">购在泸沽湖</span>
-          <p class="address">当前位置：首页><span>购在泸沽湖</span></p>
+          <span><img class="triangle" src="../../../static/images/triangle.png" alt="">魅力泸沽湖</span>
+          <p class="address">当前位置：首页><span>魅力泸沽湖</span></p>
         </div>
 
         <div class="eatList">
           <ul class="clearfix">
-            <li  v-for="(item,index) in shoppings" :key="index">
-              <router-link :to="{path:'/shopping_s',query:{ id:item.id}}">
+            <li v-for="(item,index) in scenicVRs" :key="index">
+              <router-link :to="{path:'/charmVR',query:{ id:item.id}}">
                 <div class="list">
-                  <img :src="imgSrc+ item.images" alt="">
+                  <img :src="imgSrc+ item.imgUrl " alt="">
                   <p class="img_detail">{{item.title}}</p>
                 </div>
               </router-link>
             </li>
 
           </ul>
-          <v-pagination :total="total" :display="display"  :current-page='current' @pagechange="pagechange"></v-pagination>
+          <v-pagination :total="total"  :display="display" :current-page='current' @pagechange="pagechange"></v-pagination>
         </div>
       </div>
     </div>
@@ -38,44 +38,45 @@
   import footer from '@/components/common/footer'
   import pagination from '@/components/common/pagination'
   export default {
-    name: 'shopping',
+    name: 'charmlist',
     data () {
       return {
-        bactive: 5,
+        bactive: 4,
         bheader: 1,
         total: 0,     // 记录总条数
         display: 9,   // 每页显示条数
         current: 1,   // 当前的页数
-        shoppings:[],
+        scenicVRs:'',
         imgSrc:''
       }
     },
     mounted(){
-      this.getShopping();
+      this.getVR() ;
     },
     methods: {
       pagechange:function(currentPage){
         console.log(currentPage);
         // ajax请求, 向后台发送 currentPage, 来获取对应的数据
         this.current = currentPage;
-        this.getShopping();
+        this.getVR();
       },
-      getShopping(){
-        var that=this;
-        that.imgSrc =that.config.imgsrc;
-        that.axios.get(that.config.info.getArtical,{
-          params : {   //请求参数
-            type: 107,
+      getVR(){
+        var self=this;
+        self.imgSrc =self.config.imgsrc;
+        self.axios.get(self.config.charm.getScenicVideo,{
+          params:{
+            page:self.current,
             size:9,
-            page:that.current
+            id:2
           }
-        })
-          .then(function (response){
-            console.log(response.data.data)
-            that.total = response.data.data.num;
-            console.log(that.total);
-            that.shoppings=response.data.data.article;
-          })
+        }).then((response) => {
+          console.log(response.data.data);
+          self.total = response.data.data.num;
+          self.scenicVRs =response.data.data.scenicVideo;
+
+        }).catch(function(error) {
+          console.log(error);
+        });
       }
     },
     components: {

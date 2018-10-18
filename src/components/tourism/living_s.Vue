@@ -13,16 +13,11 @@
 
         <div class="content_detail clearfix">
             <div class="conL lf">
-              <h6>泸沽湖云上度假酒店 </h6>
+              <h6>{{hotel.hotelName}}</h6>
               <div class="swiper">
                 <swiper :options="swiperOption" ref="mySwiper">
                   <!-- slides -->
-                  <swiper-slide><img src="../../../static/images/live1.png" alt=""></swiper-slide>
-                  <swiper-slide><img src="../../../static/images/strategy4.png" alt=""></swiper-slide>
-                  <swiper-slide><img src="../../../static/images/strategy5.png" alt=""></swiper-slide>
-                  <swiper-slide><img src="../../../static/images/strategy6.png" alt=""></swiper-slide>
-                  <swiper-slide><img src="../../../static/images/strategy7.png" alt=""></swiper-slide>
-                  <swiper-slide><img src="../../../static/images/strategy8.png" alt=""></swiper-slide>
+                  <swiper-slide v-for="(item,index) in hotelImgs" :key="index"><img :src="imgSrc+ item.imgUrl" alt=""></swiper-slide>
                   <!-- Optional controls -->
                   <div class="swiper-pagination" slot="pagination"></div>
                   <div class="swiper-button-prev" slot="button-prev"></div>
@@ -34,21 +29,10 @@
               </div>
               <div class="artile">
                 <p class="title">简介：</p>
-                 <p class='artile_detail'>泸沽湖云上度假酒店位于美丽的泸沽湖，坐北朝南，依山而建。专业的设计团队打造的5层楼24间海景房，让看风景成为享受。酒店设有：一楼超大园林景观，三楼水景露台，四楼休息区，五楼天台休闲区，800平方的地下停车场。1:1的绿化配比让您的假期更好得到放松。</p>
-                <ul>
-                  <li class="title">酒店设施：</li>
-                  <li>网络	</li>
-                  <li>客房WIFI免费房间内高速上网公共区WIFI免费</li>
-                  <li>交通设施	</li>
-                  <li>免费停车场</li>
-                  <li>交通服务</li>
-                  <li>接机服务接站服务租车服务叫车服务</li>
-                  <li>休闲娱乐</li>
-                  <li>室外游泳池健身室SPA按摩室棋牌室茶室</li>
-                  <li>前台服务</li>
-                  <li>行李寄存24小时前台24小时大堂经理专职门童免费旅游交通图旅游票务叫醒服务邮政服务</li>
-                  <li>地址：盐源 泸沽湖达祖村扎日落 ，泸沽湖旁</li>
-                </ul>
+                 <p class='artile_detail' v-html="hotel.hotelDetail"></p>
+                <div v-html="hotel.hotelFacility">
+
+                </div>
               </div>
             </div>
           <div class="conR lf">
@@ -57,18 +41,11 @@
             </div>
 
             <div class="livLists">
-               <div class="live">
-                 <img src="../../../static/images/lives1.jpg" alt="">
-                 <p>泸沽湖云端原舍精品湖景客栈 </p>
+               <div class="live" v-for="(item,index) in recommends" :key="index">
+                 <img :src="imgSrc+ item.imgUrl" alt="">
+                 <p>{{item.hotelName}} </p>
                </div>
-               <div class="live">
-                 <img src="../../../static/images/lives2.jpg" alt="">
-                 <p>泸沽湖女神湾圆融居客栈</p>
-               </div>
-               <div class="live">
-                 <img src="../../../static/images/lives3.jpg" alt="">
-                 <p>Q加·泸沽湖意外客栈</p>
-               </div>
+
             </div>
 
           </div>
@@ -97,6 +74,10 @@
       return {
         bactive: 5,
         bheader: 1,
+        hotelImgs:'',
+        hotel:'',
+        recommends:'',
+//        hotelName:'',
         swiperOption: {
           autoplay: true,
           loop: true, // 循环模式选项
@@ -113,6 +94,29 @@
         }
 
       }
+    },
+    mounted(){
+      this.getHotelDetail();
+    },
+    methods:{
+      getHotelDetail(){
+        var hotelID=this.$route.query.id;
+        this.imgSrc =this.config.imgsrc;
+        this.axios.get(this.config.tourism.getHotelDetail,{
+          params:{
+            id:hotelID,
+            recommendNum:4
+          }
+        }).then((response) => {
+          console.log(response.data.data);
+          this.hotelImgs =response.data.data.hotelImgs;
+          this.hotel =response.data.data.hotel;
+          this.recommends =response.data.data.recommends;
+        }).catch(function(error) {
+          console.log(error);
+        });
+      }
+
     },
     computed: {
       swiper() {
@@ -263,5 +267,10 @@
     text-align: center;
     width: 100%;
   }
-
+  >>>p img{
+       width: 680px;
+       height: 450px;
+       margin: 30px auto;
+       margin-left: 150px;
+     }
 </style>

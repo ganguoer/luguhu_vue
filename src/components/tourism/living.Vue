@@ -12,41 +12,15 @@
 
         <div class="liveList">
           <ul class="clearfix">
-            <li>
-              <router-link to="/living_s">
+            <li v-for="(item,index) in livings" :key="index">
+              <router-link :to="{path:'/living_s',query:{ id:item.id}}" >
                 <div class="list clearfix">
-                  <img src="../../../static/images/live1.png" alt="">
+                  <img :src="imgSrc+ item.imgUrl " alt="">
                   <div class="listr">
-                     <p class="title">泸沽湖云上度假酒店 </p>
-                    <p class="detail">  泸沽湖云上度假酒店位于美丽的泸沽湖，坐北朝南，依山而建。专业的设计团队打造的5层楼24间海景房，让看风景成为享受。酒店设有：一楼超大园林景观，三楼水景露台，四楼休息区，五楼天台休闲区，800平方的地下停车场。1:1的绿化配比让您的假期更好得到放松。</p>
-                    <p>地址：盐源 泸沽湖达祖村扎日落 ，泸沽湖旁</p>
-                    <p>电话：0834-3335555</p>
-                  </div>
-                </div>
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/living_s">
-                <div class="list clearfix">
-                  <img src="../../../static/images/live1.png" alt="">
-                  <div class="listr">
-                     <p class="title">泸沽湖云上度假酒店 </p>
-                    <p class="detail">  泸沽湖云上度假酒店位于美丽的泸沽湖，坐北朝南，依山而建。专业的设计团队打造的5层楼24间海景房，让看风景成为享受。酒店设有：一楼超大园林景观，三楼水景露台，四楼休息区，五楼天台休闲区，800平方的地下停车场。1:1的绿化配比让您的假期更好得到放松。</p>
-                    <p>地址：盐源 泸沽湖达祖村扎日落 ，泸沽湖旁</p>
-                    <p>电话：0834-3335555</p>
-                  </div>
-                </div>
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/living_s">
-                <div class="list clearfix">
-                  <img src="../../../static/images/live1.png" alt="">
-                  <div class="listr">
-                     <p class="title">泸沽湖云上度假酒店 </p>
-                    <p class="detail">  泸沽湖云上度假酒店位于美丽的泸沽湖，坐北朝南，依山而建。专业的设计团队打造的5层楼24间海景房，让看风景成为享受。酒店设有：一楼超大园林景观，三楼水景露台，四楼休息区，五楼天台休闲区，800平方的地下停车场。1:1的绿化配比让您的假期更好得到放松。</p>
-                    <p>地址：盐源 泸沽湖达祖村扎日落 ，泸沽湖旁</p>
-                    <p>电话：0834-3335555</p>
+                     <p class="title">{{item.hotelName}} </p>
+                    <p class="detail"> {{item.hotelDetail}}</p>
+                    <p>{{item.address}}</p>
+                    <p>电话：{{item.phone}}</p>
                   </div>
                 </div>
               </router-link>
@@ -54,7 +28,7 @@
 
           </ul>
 
-          <v-pagination :total="total" :current-page='current' @pagechange="pagechange"></v-pagination>
+          <v-pagination :total="total" :display="display" :current-page='current' @pagechange="pagechange"></v-pagination>
         </div>
       </div>
     </div>
@@ -75,15 +49,38 @@
       return {
         bactive: 5,
         bheader: 1,
-        total: 150,     // 记录总条数
+        total: 0,     // 记录总条数
         display: 9,   // 每页显示条数
         current: 1,   // 当前的页数
+        livings:[],
+        imgSrc:''
       }
+    },
+    mounted(){
+      this.getLiving();
     },
     methods: {
       pagechange:function(currentPage){
         console.log(currentPage);
         // ajax请求, 向后台发送 currentPage, 来获取对应的数据
+        this.current = currentPage;
+        this.getLiving();
+      },
+      getLiving(){
+        var that=this;
+        that.imgSrc =that.config.imgsrc;
+        that.axios.get(that.config.tourism.getHotel,{
+          params : {   //请求参数
+            size:9,
+            page:that.current
+          }
+        })
+          .then(function (response){
+            console.log(response.data.data)
+            that.total = response.data.data.num;
+            console.log(that.total);
+            that.livings=response.data.data.hotel;
+          })
       }
     },
     components: {

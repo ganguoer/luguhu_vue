@@ -12,84 +12,19 @@
 
       <div class="eatList">
          <ul class="clearfix">
-           <li>
-             <router-link to="eating_s">
+           <li v-for="(item,index) in eatings" :key="index">
+             <router-link :to="{path:'/eating_s',query:{ id:item.id}}">
                <div class="list">
-                 <img src="../../../static/images/indexs_17.png" alt="">
-                 <p class="img_detail">苦荞粑粑</p>
-               </div>
-             </router-link>
-           </li>
-           <li>
-             <router-link to="eating_s">
-               <div class="list">
-                 <img src="../../../static/images/indexs_17.png" alt="">
-                 <p class="img_detail">苦荞粑粑</p>
-               </div>
-             </router-link>
-           </li>
-           <li>
-             <router-link to="eating_s">
-               <div class="list">
-                 <img src="../../../static/images/indexs_17.png" alt="">
-                 <p class="img_detail">苦荞粑粑</p>
-               </div>
-             </router-link>
-           </li>
-           <li>
-             <router-link to="eating_s">
-               <div class="list">
-                 <img src="../../../static/images/indexs_17.png" alt="">
-                 <p class="img_detail">苦荞粑粑</p>
-               </div>
-             </router-link>
-           </li>
-           <li>
-             <router-link to="eating_s">
-               <div class="list">
-                 <img src="../../../static/images/indexs_17.png" alt="">
-                 <p class="img_detail">苦荞粑粑</p>
-               </div>
-             </router-link>
-           </li>
-           <li>
-             <router-link to="eating_s">
-               <div class="list">
-                 <img src="../../../static/images/indexs_17.png" alt="">
-                 <p class="img_detail">苦荞粑粑</p>
-               </div>
-             </router-link>
-           </li>
-           <li>
-             <router-link to="eating_s">
-               <div class="list">
-                 <img src="../../../static/images/indexs_17.png" alt="">
-                 <p class="img_detail">苦荞粑粑</p>
-               </div>
-             </router-link>
-           </li>
-           <li>
-             <router-link to="eating_s">
-               <div class="list">
-                 <img src="../../../static/images/indexs_17.png" alt="">
-                 <p class="img_detail">苦荞粑粑</p>
-               </div>
-             </router-link>
-           </li>
-           <li>
-             <router-link to="eating_s">
-               <div class="list">
-                 <img src="../../../static/images/indexs_17.png" alt="">
-                 <p class="img_detail">苦荞粑粑</p>
+                 <img :src="imgSrc+ item.images" alt="">
+                 <p class="img_detail">{{item.title}}</p>
                </div>
              </router-link>
            </li>
 
          </ul>
 
-        <v-pagination :total="total" :current-page='current' @pagechange="pagechange"></v-pagination>
+        <v-pagination :total="total" :display="display" :current-page='current' @pagechange="pagechange"></v-pagination>
       </div>
-
 
     </div>
   </div>
@@ -110,16 +45,39 @@
             return {
               bactive: 5,
               bheader: 1,
-              total: 150,     // 记录总条数
+              total: 0,     // 记录总条数
               display: 9,   // 每页显示条数
               current: 1,   // 当前的页数
+              eatings:[],
+              imgSrc:''
             }
         },
+      mounted(){
+        this.getEating();
+      },
       methods: {
         pagechange:function(currentPage){
           console.log(currentPage);
           // ajax请求, 向后台发送 currentPage, 来获取对应的数据
-
+          this.current = currentPage;
+          this.getEating();
+        },
+        getEating(){
+          var that=this;
+          that.imgSrc =that.config.imgsrc;
+          that.axios.get(that.config.info.getArtical,{
+            params : {   //请求参数
+              type: 106,
+              size:9,
+              page:that.current
+            }
+          })
+            .then(function (response){
+              console.log(response.data.data)
+              that.total = response.data.data.num;
+              console.log(that.total);
+              that.eatings=response.data.data.article;
+            })
         }
       },
       components: {

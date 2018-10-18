@@ -7,19 +7,13 @@
       <div class="charm_t">
         <div class="charm_title">
           <span><img class="triangle" src="../../../static/images/triangle.png" alt="">吃在泸沽湖</span>
-          <p class="address">当前位置：首页>旅游攻略>吃在泸沽湖><span>苦荞粑粑</span></p>
+          <p class="address">当前位置：首页>旅游攻略>吃在泸沽湖><span>{{eatdetails.title}} </span></p>
         </div>
 
-        <div class="tour_artile">
-          <h6>苦荞粑粑 </h6>
-          <div class="section">
-            <p>摩梭人都是热情好客的，当你去他家做客记得尝尝主人自己做的苦荞粑粑。苦荞在彝族心目中是五谷之王，它具有健胃、化滞、清热等功效，做成的苦荞粑粑苦甜爽口，回味无穷，外表其貌不扬，属于“好吃不好看”类型。用火灰烧出的苦荞粑粑，摆上十天半月不会变质。苦荞粑粑蘸冬蜂蜜进餐，风味更佳呢。</p>
-          </div>
-          <div class="section">
-            <img src="../../../static/images/strategy8.png" alt="">
-          </div>
-          <div class="section">
-            <img src="../../../static/images/strategy9.png" alt="">
+        <div class="tour_artile" >
+          <h6>{{eatdetails.title}} </h6>
+          <div class="section" v-html=" eatdetails.content">
+
           </div>
         </div>
       </div>
@@ -39,8 +33,23 @@
     data () {
       return {
         bactive: 5,
-        bheader: 1
+        bheader: 1,
+        eatdetails:''
       }
+    },
+    created: function() {
+      var newsID=this.$route.query.id;
+      this.imgSrc =this.config.imgsrc;
+      this.axios.get(this.config.info.getArticalById,{
+        params:{
+          id:newsID
+        }
+      }).then((response) => {
+        console.log(response.data.data);
+        this.eatdetails =response.data.data;
+      }).catch(function(error) {
+        console.log(error);
+      });
     },
     components: {
       'v-header': header,
@@ -105,9 +114,10 @@
   .tour_artile h6{margin: 0;font-size: 18px;color: #444444; margin-bottom: 15px}
   .section{margin: 16px 0}
   .section p{text-indent: 2em;font-size: 14px;color: #222222;line-height: 30px;}
-  .section img{
+  >>>p img{
     width: 680px;
     height: 450px;
     margin: 30px auto;
+       margin-left: 150px;
   }
 </style>

@@ -76,36 +76,12 @@
          <span>线路游览 /Line tour</span>
        </div>
        <ul class="clearfix">
-         <li>
-           <router-link to="/line_s">
-             <img class="linelist" src="../../../static/images/linelist1.png" alt="">
+         <li v-for="(item,index) in linelists" :key="index">
+           <router-link :to="{path:'/line_s',query:{ id:item.id}}" >
+             <img class="linelist" :src="imgSrc+ item.images" alt="">
              <div class="linemode">
-               成都周边游纯玩泸沽湖四日游
+               {{item.title}}
              </div>
-           </router-link>
-         </li>
-         <li>
-           <router-link to="/line_s">
-           <img class="linelist" src="../../../static/images/linelist1.png" alt="">
-           <div class="linemode">
-             成都周边游纯玩泸沽湖四日游
-           </div>
-           </router-link>
-         </li>
-         <li>
-           <router-link to="/line_s">
-           <img class="linelist" src="../../../static/images/linelist1.png" alt="">
-           <div class="linemode">
-             成都周边游纯玩泸沽湖四日游
-           </div>
-           </router-link>
-         </li>
-         <li>
-           <router-link to="/line_s">
-           <img class="linelist" src="../../../static/images/linelist1.png" alt="">
-           <div class="linemode">
-             成都周边游纯玩泸沽湖四日游
-           </div>
            </router-link>
          </li>
        </ul>
@@ -117,43 +93,15 @@
          <span>旅游日志 /Travel log</span>
        </div>
        <ul class="clearfix">
-         <li>
-           <router-link to="/travel_s">
-             <img class="travellist" src="../../../static/images/travellist1.png" alt="">
+         <li v-for="(item,index) in travellists" :key="index">
+           <router-link :to="{path:'/travel_s',query:{ id:item.id}}">
+             <img class="travellist" :src="imgSrc + item.images"  alt="">
              <div class="travelmode">
-               <p class="travel_t">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
-               <p class="travel_des">听说，来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟...</p>
+               <p class="travel_t">{{item.title}}</p>
+               <p class="travel_des" style="-webkit-box-orient: vertical;">{{item.content}}</p>
              </div>
            </router-link>
          </li>
-         <li>
-           <router-link to="/travel_s">
-             <img class="travellist" src="../../../static/images/travellist1.png" alt="">
-             <div class="travelmode">
-               <p class="travel_t">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
-               <p class="travel_des">听说，来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟...</p>
-             </div>
-           </router-link>
-         </li>
-         <li>
-           <router-link to="/travel_s">
-             <img class="travellist" src="../../../static/images/travellist1.png" alt="">
-             <div class="travelmode">
-               <p class="travel_t">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
-               <p class="travel_des">听说，来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟...</p>
-             </div>
-           </router-link>
-         </li>
-         <li>
-           <router-link to="/travel_s">
-             <img class="travellist" src="../../../static/images/travellist1.png" alt="">
-             <div class="travelmode">
-               <p class="travel_t">云南必游｜写给泸沽湖的一纸情书：爱你如初，情深一往</p>
-               <p class="travel_des">听说，来云南旅行会有两种不同的心态：一是去不甚了解的秘境探秘奇遇，如滇东南；二是去已熟...</p>
-             </div>
-           </router-link>
-         </li>
-
        </ul>
      </div>
 
@@ -172,8 +120,51 @@
     data () {
       return {
         bactive: 5,
-        bheader: 1
+        bheader: 1,
+        linelists:[],
+        travellists:[],
+        imgSrc:''
+
       }
+    },
+    mounted(){
+      this.getlinelist();
+      this.gettravellist();
+    },
+    methods: {
+      getlinelist(){
+        var that=this;
+        that.imgSrc =that.config.imgsrc;
+        that.axios.get(that.config.info.getArtical,{
+          params : {   //请求参数
+            type: 105,
+            size:4,
+            page:1
+          }
+        })
+          .then(function (response){
+            console.log(response.data.data)
+            that.total = response.data.data.num;
+            console.log(that.total);
+            that.linelists=response.data.data.article;
+          })
+      },
+      gettravellist(){
+        var that=this;
+        that.axios.get(that.config.info.getArtical,{
+          params : {   //请求参数
+            type: 108,
+            size:4,
+            page:1
+          }
+        })
+          .then(function (response){
+            console.log(response.data.data)
+            that.total = response.data.data.num;
+            console.log(that.total);
+            that.travellists=response.data.data.article;
+          })
+      },
     },
     components: {
       'v-header': header,
@@ -329,7 +320,6 @@
   .travellist{width: 275px;height: 172px;display: block;}
   .travelmode{width: 261px; height: 131px;background-color: rgba(17,130,227,0.62);color: #fff;text-align: left;padding: 12px 7px;}
   .travel_t{font-size: 16px;padding:0 10px 10px;border-bottom: 1px solid #fff;}
-  .travel_des{font-size: 14px;padding: 10px 10px 0;line-height: 22px;}
-
+  .travel_des{font-size: 14px;padding: 10px 10px 0;line-height: 22px;display: -webkit-box; -webkit-box-orient: vertical;  -webkit-line-clamp: 3;  overflow: hidden;}
   li>a{display: block;width: 100%;height: 100%;}
 </style>
