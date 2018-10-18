@@ -99,8 +99,8 @@
   </div>
   <div class="thirdwarp">
       <ul class="scenic_spot clearfix">
-          <li v-for="(item,index) in shopList" :key="index">
-            <router-link :to="{path:'/shopping_s',query:{ id:item.id}}" >
+          <li v-for="(item,index) in linelists" :key="index">
+            <router-link :to="{path:'/line_s',query:{ id:item.id}}" >
               <div class="img_wrap"><img :src="imgSrc+ item.images"></div>
               <p>{{item.title}}</p>
             </router-link>
@@ -177,9 +177,9 @@
 <script>
 import '../../static/js/Cooldog.js'
 import footer from "@/components/common/footer";
-import select1 from "@/components/component_child/tabTransport";
-import select2 from "@/components/component_child/tabTransport";
-import select3 from "@/components/component_child/tabTransport";
+import select1 from "@/components/component_child/tabHotel";
+import select2 from "@/components/component_child/tabEating";
+import select3 from "@/components/component_child/tabShopping";
 import select4 from "@/components/component_child/tabTransport";
 $(function(){
     $('.list_imgs li').hover(function(){
@@ -206,6 +206,7 @@ export default {
       scenicList:[],
       hotelList:[],
       travelList:[],
+      linelists:[]
     };
   },
   computed: {},
@@ -226,6 +227,7 @@ export default {
     this.scenicLists();
     this.hotelLists();
     this.travelLists();
+    this.getlinelist();
   },
   methods: {
     add() {
@@ -343,7 +345,24 @@ export default {
           console.log(response.data.data)
           that.travelList=response.data.data.article;
         })
-    }
+    },
+    getlinelist(){
+      var that=this;
+      that.imgSrc =that.config.imgsrc;
+      that.axios.get(that.config.info.getArtical,{
+        params : {   //请求参数
+          type: 105,
+          size:4,
+          page:1
+        }
+      })
+        .then(function (response){
+          console.log(response.data.data)
+          that.total = response.data.data.num;
+          console.log(that.total);
+          that.linelists=response.data.data.article;
+        })
+    },
   }
 };
 </script>

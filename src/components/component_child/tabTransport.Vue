@@ -1,12 +1,12 @@
 <template>
   <div slot='select01'>
     <ul class="list_imgs clearfix" >
-      <li v-for="(item,index) in hotelList" :key="index" >
+      <li v-for="(item,index) in transportList" :key="index" >
         <div class="imgs">
-          <img :src="imgSrc+ item.imgUrl ">
+          <img :src="imgSrc+ item.images ">
           <router-link :to="{path:'/living_s',query:{ id:item.id}}" class="modetails">查看详情</router-link>
         </div>
-        <p>{{item.hotelName}}</p>
+        <p>{{item.title}}</p>
       </li>
     </ul>
   </div>
@@ -17,27 +17,28 @@
     name:'tabTransport',
     data(){
       return{
-        hotelList:[]
+        transportList:[]
       }
     },
     mounted(){
-      this.hotelLists();
+      this.getTransport();
     },
     methods: {
-      hotelLists(){
+      getTransport(){
         var that=this;
         that.imgSrc =that.config.imgsrc;
-        that.axios.get(that.config.tourism.getHotel,{
+        that.axios.get(that.config.info.getArtical,{
           params : {   //请求参数
+            type: 110,
             size:4,
             page:1
           }
         })
           .then(function (response){
             console.log(response.data.data)
-            that.hotelList=response.data.data.hotel;
+            that.transportList=response.data.data.article;
           })
-      },
+      }
     }
   }
 </script>
