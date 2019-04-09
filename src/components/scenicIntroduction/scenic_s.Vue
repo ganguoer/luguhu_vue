@@ -11,7 +11,8 @@
         </div>
 
         <div class="tour_artile">
-          <h6>{{scenicDetails.title}}  <img src="../../../static/images/VR.png" alt=""> <a href="#">VR全景</a></h6>
+          <h6>{{scenicDetails.title}}  </h6>
+          <!--<img src="../../../static/images/VR.png" alt=""> <a href="#">VR全景</a>-->
           <div class="section" v-html="scenicDetails.content">
 
           </div>
@@ -127,4 +128,10 @@
     height: 450px;
     margin: 30px auto;
   }
+  >>>p img{
+       width: 680px;
+       height: 450px;
+       margin: 30px auto;
+       margin-left: 200px;
+     }
 </style>

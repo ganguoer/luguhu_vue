@@ -111,7 +111,8 @@
           console.log(response.data.data);
           this.hotelImgs =response.data.data.hotelImgs;
           this.hotel =response.data.data.hotel;
-          this.recommends =response.data.data.recommends;
+          this.recommends =response.data.data.recommends.slice(0,2);
+
         }).catch(function(error) {
           console.log(error);
         });
@@ -271,6 +272,6 @@
        width: 680px;
        height: 450px;
        margin: 30px auto;
-       margin-left: 150px;
+       margin-left: 200px;
      }
 </style>

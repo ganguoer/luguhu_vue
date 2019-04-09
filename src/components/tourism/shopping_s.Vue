@@ -122,6 +122,6 @@
        width: 680px;
        height: 450px;
        margin: 30px auto;
-       margin-left: 150px;
+       margin-left: 200px;
      }
 </style>

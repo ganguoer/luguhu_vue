@@ -9,7 +9,7 @@
           <li :class="bactive==3 ? 'active' : '' "><router-link to="/scenic">景区介绍</router-link></li>
           <li :class="bactive==4 ? 'active' : '' "><router-link to="/charm">魅力泸沽湖</router-link></li>
           <li :class="bactive==5 ? 'active' : '' "><router-link to="/tourism">旅游攻略</router-link></li>
-          <li :class="bactive==6 ? 'active' : '' "><router-link to="/market">景区电商</router-link></li>
+          <li :class="bactive==6 ? 'active' : '' "><a href="http://lghly.citgroup.cn/" target="_blank">景区电商</a></li>
         </ul>
       </div>
     </div>

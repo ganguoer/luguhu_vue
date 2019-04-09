@@ -2,11 +2,13 @@
   <div slot='select01'>
     <ul class="list_imgs clearfix" >
       <li v-for="(item,index) in hotelList" :key="index" >
+        <router-link :to="{path:'/living_s',query:{ id:item.id}}" >
         <div class="imgs">
           <img :src="imgSrc+ item.imgUrl ">
           <router-link :to="{path:'/living_s',query:{ id:item.id}}" class="modetails">查看详情</router-link>
         </div>
         <p>{{item.hotelName}}</p>
+        </router-link>
       </li>
     </ul>
   </div>

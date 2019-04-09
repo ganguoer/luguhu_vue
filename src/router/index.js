@@ -28,7 +28,6 @@ import living_s from '@/components/tourism/living_s'  //住 二级页面
 import scenic from '@/components/scenicIntroduction/scenic'  //景区介绍页面
 import scenic_s from '@/components/scenicIntroduction/scenic_s'  //景区介绍二级页面
 
-import market from '@/components/market/market'  //电商页面
 
 Vue.use(Router)
 
@@ -146,11 +145,6 @@ export default new Router({
       path: '/scenic_s',  //景区介绍二级页面
       name: 'scenic_s',
       component: scenic_s
-    },
-    {
-      path: '/market',  //电商页面
-      name: 'market',
-      component: market
     }
 
   ]

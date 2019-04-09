@@ -10,7 +10,7 @@
                 <li><router-link to="/scenic">景区介绍</router-link></li>
                 <li><router-link to="/charm">魅力泸沽湖</router-link></li>
                 <li><router-link to="/tourism">旅游攻略</router-link></li>
-                <li><router-link to="/market">景区电商</router-link></li>
+                <li><a href="http://lghly.citgroup.cn/" target="_blank">景区电商</a></li>
             </ul>
         </div>
         <div class="rf search">
@@ -110,15 +110,16 @@
       <div class="hot_scenic">
         <div class="banners clearfix">
             <h3 class="tits_tip tits_tip1 lf">热门景点</h3>
-            <router-link to="" class="rf mores">更多>></router-link>
+            <router-link to="/scenic" class="rf mores">更多>></router-link>
         </div>
         <ul class="list_imgs clearfix">
             <li v-for="(item,index) in scenicList" :key="index">
+              <router-link :to="{path:'/scenic_s',query:{ id:item.id}}" >
                 <div class="imgs">
                     <img :src="imgSrc+ item.images">
-                    <router-link :to="{path:'/scenic_s',query:{ id:item.id}}" class="modetails">查看详情</router-link>
                 </div>
                 <p>{{item.title}}</p>
+              </router-link>
             </li>
 
         </ul>
@@ -149,6 +150,7 @@
     </div>
     <ul class="ul_contlist">
         <li class="clearfix" v-for="(item,index) in travelList" :key="index">
+          <router-link :to="{path:'/travel_s',query:{ id:item.id}}">
             <div class="lf contl_img"><img :src="imgSrc + item.images"></div>
             <div class="lf text_p">
                 <p class="titles_1">{{item.title}}</p>
@@ -161,6 +163,8 @@
                     <div class="lf bips bips_1">
                         <span class="area_tip"><img src="../../static/images/index2.jpg"></span>
                         一直在路上
+
+
                     </div>
                     <div class="lf bips">
                         <span class="iconcom look"></span>
@@ -168,6 +172,7 @@
                     </div>
                 </div>
             </div>
+          </router-link>
         </li>
     </ul>
   </div>
@@ -262,7 +267,7 @@ export default {
       that.imgSrc =that.config.imgsrc;
       that.axios.get(that.config.info.hotImg,{
         params:{
-          size:6
+          size:7
         }
       })
         .then(function (response){

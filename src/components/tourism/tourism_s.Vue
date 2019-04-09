@@ -153,4 +153,10 @@
     height: 450px;
     margin: 30px auto;
   }
+  >>>p img{
+       width: 680px;
+       height: 450px;
+       margin: 30px auto;
+       margin-left: 200px;
+     }
 </style>
