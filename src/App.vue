@@ -6,7 +6,9 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+ methods: {
+ }
 }
 </script>
 
@@ -19,3 +21,6 @@ export default {
   height: 100%;
 }
 </style>
+
+
+

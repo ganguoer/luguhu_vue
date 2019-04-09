@@ -36,8 +36,8 @@
         <div class="hotzxun">
             <h3>热点资讯</h3>
             <ul class="zxnews">
-              <li v-for="(item,index) in hotInfo" :key="index">
-                <router-link  class="clearfix" :to="{path:'/newsdetail',query:{ id:item.id}}" >
+              <li v-for="(item,index) in hotInfo" :key="index" >
+                <router-link  class="clearfix" :to="{path:'/newsdetail',query:{ id:item.id}}" @click.native="flushCom" >
                   <span class="lf">{{index+1}}</span>
                   <span class="lf textss">{{item.title}}</span>
                 </router-link>
@@ -47,7 +47,7 @@
           </div>
       </div>
       <div class="lf lf_changecont">
-        <router-view/>
+        <router-view></router-view>
       </div>
     </div>
     <v-footer></v-footer>
@@ -73,7 +73,6 @@ export default {
     }
   },
   mounted(){
-
     $(function(){
       $('.nav-second li').bind('click',function(){
         $('.nav-second li').removeClass('on')
@@ -86,6 +85,9 @@ export default {
 
   },
   methods:{
+    flushCom:function(){
+　　　this.$router.go(0);  
+    },
     getImg(){
       var that=this;
       that.imgSrc =that.config.imgsrc;
